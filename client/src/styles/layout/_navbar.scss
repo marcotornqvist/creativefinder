@@ -1,29 +1,114 @@
-nav {
-  min-height: 60px;
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   background: $darkblue;
-  margin-bottom: 50px;
 
-  .navbar-brand {
-    font-size: 28px;
-    color: $white;
+  &.transparent-bg {
+    position: absolute;
+    top: 0;
+    background: transparent !important;
   }
 
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    outline: 0;
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    height: 60px;
+    width: 100%;
+
+    h2 {
+      letter-spacing: 2px;
+      padding-right: 5px;
+      margin: 0;
+
+      a {
+        color: $white;
+      }
+    }
+
+    i {
+      color: $white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+
+        a {
+          color: $white;
+        }
+      }
+
+      li:first-child {
+        margin: 0;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+
+      i.fa-bell {
+        margin: 0;
+      }
+
+      .my-profile {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 15px;
+          font-size: 16px;
+
+          a {
+            color: $white;
+          }
+        }
+
+        img {
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .auth-links {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+
+        a {
+          color: $white;
+        }
+      }
+    }
   }
+}
 
-  .navbar-toggler {
-    border: none;
-    outline: 0;
-    padding: 0px;
-  }
-
-  a {
-    color: white;
-
-    &:hover {
-      color: white;
+@media only screen and (min-width: 768px) {
+  .navbar {
+    .buttons {
+      i {
+        margin-left: 15px;
+        font-size: 16px;
+      }
     }
   }
 }

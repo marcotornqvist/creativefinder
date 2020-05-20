@@ -1,0 +1,104 @@
+.messages {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  height: 440px;
+  margin: auto 15px;
+  padding: 0 15px 0;
+  box-shadow: $box-shadow1;
+  background: $white;
+  border-radius: 6px;
+  z-index: 5;
+
+  .chat ul {
+    border-bottom: 1px solid $border-color;
+  }
+
+  .chat,
+  .notifs {
+    overflow: hidden;
+    height: 55px;
+    transition: height 1s;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    border-bottom: 1px solid $border-color;
+    cursor: pointer;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: $black;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+      color: $black;
+
+      &.new {
+        color: $darkblue;
+      }
+    }
+  }
+
+  ul {
+    height: 0;
+    opacity: 0;
+    overflow: scroll;
+    transition: height 1s;
+    transition: opacity 1s;
+    padding: 15px 0 0 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      height: 55px;
+
+      p {
+        font-size: 13px;
+        color: $grey;
+
+        span {
+          color: $black;
+          font-weight: 500;
+        }
+      }
+
+      .img-box {
+        margin-right: 10px;
+
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .open {
+    height: 385px;
+
+    ul {
+      height: 340px;
+      opacity: 100%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .messages {
+    position: fixed;
+    top: 70px;
+    left: initial;
+    right: 15px;
+    width: 250px;
+    margin: 0;
+  }
+}

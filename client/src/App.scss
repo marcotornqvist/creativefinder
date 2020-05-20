@@ -2,9 +2,15 @@
 @import "/styles/main";
 
 // Components
+@import "./styles/components/messages";
+@import "./styles/components/search";
+@import "./styles/components/profile-dropdown";
 
 // Layout
 @import "./styles/layout/navbar";
+@import "./styles/layout/sidenav";
+@import "./styles/layout/footer";
 
 // Pages
 @import "./styles/pages/landing";
+@import "./styles/pages/creatives";

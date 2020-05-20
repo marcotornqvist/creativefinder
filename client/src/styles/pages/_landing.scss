@@ -1,0 +1,162 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+
+  .showcase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px;
+    background: url("../../img/stripes.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .branding {
+      text-align: center;
+
+      h1 {
+        color: $white;
+        letter-spacing: 1px;
+        font-size: 12vmin;
+        margin-bottom: 5px;
+      }
+
+      p {
+        color: $white;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+
+      button {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 14px 32px;
+        background: $white;
+        color: $black;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+        cursor: pointer;
+        box-shadow: $box-shadow1;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 15px;
+
+    h2 {
+      margin-bottom: 50px;
+      text-align: center;
+      font-size: 32px;
+
+      a {
+        color: $blue;
+      }
+    }
+
+    .boxes {
+      max-width: 880px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .box {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        border-radius: 6px;
+        margin: 0 10px 20px;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: $box-shadow1;
+
+        h3 {
+          position: absolute;
+          color: $white;
+          font-size: 18px;
+          text-align: center;
+          z-index: 3;
+        }
+
+        img {
+          height: 200px;
+          width: 200px;
+          object-fit: cover;
+          margin-right: 0px;
+          transition: transform 0.5s;
+          transform: scale(1.01);
+        }
+
+        .overlay {
+          position: absolute;
+          height: 200px;
+          width: 200px;
+          opacity: 90%;
+          transition: 0.5s ease;
+          background: $green;
+          z-index: 2;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
+
+          .overlay {
+            opacity: 75%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .landing {
+    .showcase {
+      .branding {
+        h1 {
+          font-size: 60px;
+        }
+
+        p {
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    .content {
+      padding: 100px 15px;
+
+      h2 {
+        margin-bottom: 100px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .landing {
+    .showcase {
+      .branding {
+        margin-bottom: 0;
+
+        h1 {
+          font-size: 60px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  opacity: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 0;
+  background: $darkblue;
+
+  &.active {
+    width: 100%;
+    opacity: 100%;
+    overflow: hidden;
+  }
+
+  .sidenav-container {
+    height: 100%;
+    overflow: hidden;
+    padding: 110px 15px 0;
+
+    .sidebar-links {
+      padding-top: 50px;
+
+      li {
+        margin-bottom: 30px;
+        white-space: nowrap;
+        font-size: 24px;
+        text-align: center;
+
+        a {
+          color: $white;
+          outline: none;
+        }
+      }
+    }
+  }
+}
