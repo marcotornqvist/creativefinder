@@ -1,17 +1,17 @@
 import React, { useState, useContext, useRef } from "react";
-import CreativeContext from "../../context/creative/creativeContext";
+import NavigationContext from "../../context/navigation/navigationContext";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
 const Messages = () => {
-  const creativeContext = useContext(CreativeContext);
-  const { togglemessages, chat, notifications } = creativeContext;
+  const navigationContext = useContext(NavigationContext);
+  const { toggleMessages, chat, notifications } = navigationContext;
   const [chatOpen, setChatOpen] = useState(false);
   const [notifsOpen, setNotifsOpen] = useState(false);
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    togglemessages(false);
+    toggleMessages(false);
   });
 
   const chatClickHandler = () => {

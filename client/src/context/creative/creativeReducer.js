@@ -1,54 +1,37 @@
 import {
   // GET_CREATIVES,
-  TOGGLE_SIDENAV,
-  TOGGLE_SEARCH,
-  TOGGLE_MESSAGES,
-  TOGGLE_PROFILE_DROPDOWN,
-  SEARCH_TEXT,
-  CLEAR_SEARCH
+  SET_SORT,
+  SET_FILTER,
+  REMOVE_FILTER,
+  RESET_FILTERS
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case TOGGLE_SIDENAV:
+    case SET_SORT:
       return {
         ...state,
-        sidenavOpen: !state.sidenavOpen,
-        messagesOpen: false,
-        profileDropdownOpen: false
+        sort: action.payload
       };
-    case TOGGLE_SEARCH:
+    case SET_FILTER:
+      const filterExists = state.fields.find(item => item === action.payload);
+      const newFilter = filterExists === action.payload && action.payload;
       return {
         ...state,
-        searchOpen: action.payload,
-        messagesOpen: false,
-        profileDropdownOpen: false
+        fields: state.fields.filter(item => item !== action.payload),
+        filters: [newFilter, ...state.filters]
       };
-    case TOGGLE_MESSAGES:
+    case REMOVE_FILTER:
       return {
         ...state,
-        messagesOpen: action.payload,
-        searchOpen: false,
-        sidenavOpen: false,
-        profileDropdownOpen: false
+        filters: state.filters.filter(item => item !== action.payload),
+        fields: [action.payload, ...state.fields]
       };
-    case TOGGLE_PROFILE_DROPDOWN:
+    case RESET_FILTERS:
       return {
         ...state,
-        profileDropdownOpen: action.payload,
-        searchOpen: false,
-        sidenavOpen: false,
-        messagesOpen: false
-      };
-    case SEARCH_TEXT:
-      return {
-        ...state,
-        searchText: action.payload
-      };
-    case CLEAR_SEARCH:
-      return {
-        ...state,
-        searchText: ""
+        sort: "Recent",
+        filters: null
       };
     default:
       return state;

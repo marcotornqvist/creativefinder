@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import CreativeContext from "../../context/creative/creativeContext";
+import NavigationContext from "../../context/navigation/navigationContext";
 
 const Results = () => {
-  const creativeContext = useContext(CreativeContext);
-  const { toggleSearch, results } = creativeContext;
+  const navigationContext = useContext(NavigationContext);
+  const { toggleSearch, results } = navigationContext;
 
   return (
     <div className="results">
@@ -23,7 +23,9 @@ const Results = () => {
           </Link>
         ))}
       </ul>
-      <button>More</button>
+      <div className="btn-container">
+        <button>More</button>
+      </div>
     </div>
   );
 };

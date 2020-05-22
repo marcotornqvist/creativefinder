@@ -2,112 +2,117 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: 60px;
   z-index: 10;
-  background: $darkblue;
+  border-bottom: 1px solid $border-color;
 
-  &.transparent-bg {
-    position: absolute;
-    top: 0;
-    background: transparent !important;
+  &.active {
+    border: none;
+
+    i {
+      color: white !important;
+    }
+
+    a {
+      color: white !important;
+    }
   }
 
   .navbar-container {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    height: 60px;
     width: 100%;
+    height: 100%;
+    padding: 0 15px;
 
-    h2 {
-      letter-spacing: 2px;
-      padding-right: 5px;
-      margin: 0;
-
+    .branding {
       a {
-        color: $white;
+        font-size: 24px;
+        color: $red;
       }
     }
 
     i {
-      color: $white;
       font-size: 20px;
+      color: $red;
       cursor: pointer;
     }
 
     .links {
       display: flex;
-      align-items: center;
 
       li {
-        margin-left: 15px;
         font-size: 16px;
-        font-weight: 500;
+        margin-left: 15px;
 
         a {
-          color: $white;
-        }
-      }
-
-      li:first-child {
-        margin: 0;
-      }
-    }
-
-    .buttons {
-      display: flex;
-      align-items: center;
-
-      i.fa-bell {
-        margin: 0;
-      }
-
-      .my-profile {
-        display: flex;
-        align-items: center;
-
-        span {
-          margin-left: 15px;
-          font-size: 16px;
-
-          a {
-            color: $white;
-          }
-        }
-
-        img {
-          border-radius: 50%;
-          width: 32px;
-          height: 32px;
-          cursor: pointer;
-          margin-left: 15px;
-        }
-      }
-    }
-
-    .auth-links {
-      display: flex;
-      align-items: center;
-
-      li {
-        margin-left: 15px;
-        font-size: 16px;
-        font-weight: 500;
-
-        a {
-          color: $white;
+          color: $darkblue;
         }
       }
     }
   }
 }
 
+#transparent-bg {
+  position: absolute;
+  top: 0;
+  background: transparent;
+  border-bottom: none;
+
+  a {
+    color: white;
+  }
+
+  i {
+    color: white;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
-    .buttons {
-      i {
+    height: 80px;
+
+    .navbar-container {
+      .menu {
+        display: flex;
+        align-items: center;
+      }
+
+      .dropdown-icons {
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+      }
+
+      .icon-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-left: 15px;
-        font-size: 16px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background: $red;
+        cursor: pointer;
+
+        i {
+          font-size: 14px;
+          color: $white;
+        }
+      }
+
+      .icon-box:first-child {
+        margin: 0;
+      }
+
+      img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        margin-left: 15px;
       }
     }
   }

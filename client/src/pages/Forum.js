@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../context/auth/authContext";
 
 const Forum = () => {
-  return <div className="forum">Forum page is meant for discussion</div>;
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, login, logout } = authContext;
+  return (
+    <div className="container">
+      <div className="login">
+        {!isAuthenticated ? (
+          <button onClick={() => login()}>Login</button>
+        ) : (
+          <button onClick={() => logout()}>logout</button>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Forum;

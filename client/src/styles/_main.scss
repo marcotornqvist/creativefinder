@@ -35,9 +35,10 @@ html {
   height: 100%;
 }
 
-.main-container {
+.container {
   flex: 1 1 auto;
   margin-top: 60px;
+  padding: 50px 15px;
 }
 
 p {
@@ -51,6 +52,8 @@ h1 {
 
 h2 {
   font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 h3 {
@@ -72,4 +75,14 @@ a {
 
 button {
   font-family: "Rubik", sans-serif;
+}
+
+i {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin-top: 80px;
+  }
 }

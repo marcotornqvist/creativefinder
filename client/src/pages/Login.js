@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../context/auth/authContext";
 
 const Login = () => {
-  return <div>Login</div>;
+  const authContext = useContext(AuthContext);
+  const { login } = authContext;
+  return (
+    <div className="container">
+      <div className="login">login</div>
+    </div>
+  );
 };
 
 export default Login;

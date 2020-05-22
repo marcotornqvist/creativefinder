@@ -1,11 +1,11 @@
 import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import CreativeContext from "../../context/creative/creativeContext";
+import NavigationContext from "../../context/navigation/navigationContext";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
 const ProfileDropdown = () => {
-  const creativeContext = useContext(CreativeContext);
-  const { toggleProfileDropdown } = creativeContext;
+  const navigationContext = useContext(NavigationContext);
+  const { toggleProfileDropdown } = navigationContext;
 
   const ref = useRef();
 

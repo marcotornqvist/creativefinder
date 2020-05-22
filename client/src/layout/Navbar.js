@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import CreativeContext from "../context/creative/creativeContext";
+import AuthContext from "../context/auth/authContext";
+import NavigationContext from "../context/navigation/navigationContext";
 import ViewportContext from "../context/viewport/viewportContext";
 import Search from "../components/navigation/Search";
 import Messages from "../components/navigation/Messages";
@@ -8,18 +9,20 @@ import ProfileDropdown from "../components/navigation/ProfileDropdown";
 
 const Navbar = () => {
   let location = useLocation();
-  const creativeContext = useContext(CreativeContext);
+  const authContext = useContext(AuthContext);
+  const navigationContext = useContext(NavigationContext);
   const viewportContext = useContext(ViewportContext);
+  const { isAuthenticated } = authContext;
   const {
     toggleSidenav,
     toggleSearch,
-    togglemessages,
+    toggleMessages,
     toggleProfileDropdown,
     searchOpen,
     messagesOpen,
     profileDropdownOpen,
-    isAuthenticated
-  } = creativeContext;
+    sidenavOpen
+  } = navigationContext;
   const { width, breakpoint } = viewportContext;
 
   const Desktop = (
@@ -28,27 +31,25 @@ const Navbar = () => {
         <h2 className="branding">
           <Link to="/creatives">Creativefinder</Link>
         </h2>
-        <ul className="links">
-          <li className="link-item">
-            <Link to="/creatives">Find Creatives</Link>
-          </li>
-          <li className="link-item">
-            <Link to="/forum">Community</Link>
-          </li>
-        </ul>
-        <div className="buttons">
-          <i
-            className="fas fa-bell"
-            onClick={e => togglemessages(!messagesOpen)}
-          ></i>
-          <i
-            className="fas fa-search"
-            onClick={e => toggleSearch(!searchOpen)}
-          ></i>
-          <div className="my-profile">
-            <span>
-              <Link to="/my-profile">Denzel Curry</Link>
-            </span>
+        <div className="menu">
+          <ul className="links">
+            <li className="link-item">
+              <Link to="/creatives">Find Creatives</Link>
+            </li>
+            <li className="link-item">
+              <Link to="/forum">Community</Link>
+            </li>
+          </ul>
+          <div className="dropdown-icons">
+            <div
+              className="icon-box"
+              onClick={e => toggleMessages(!messagesOpen)}
+            >
+              <i className="fas fa-bell"></i>
+            </div>
+            <div className="icon-box" onClick={e => toggleSearch(!searchOpen)}>
+              <i className="fas fa-search"></i>
+            </div>
             <img
               onClick={e => toggleProfileDropdown(!profileDropdownOpen)}
               src="https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
@@ -58,8 +59,8 @@ const Navbar = () => {
         </div>
       </div>
       {searchOpen && <Search />}
-      {messagesOpen && isAuthenticated && <Messages />}
-      {profileDropdownOpen && isAuthenticated && <ProfileDropdown />}
+      {messagesOpen && <Messages />}
+      {profileDropdownOpen && <ProfileDropdown />}
     </Fragment>
   );
 
@@ -68,14 +69,17 @@ const Navbar = () => {
       <div className="navbar-container">
         <i
           className="fas fa-bell"
-          onClick={e => togglemessages(!messagesOpen)}
+          onClick={e => toggleMessages(!messagesOpen)}
         ></i>
         <h2 className="branding">
           <Link to="/creatives">Creativefinder</Link>
         </h2>
-        <i className="fas fa-bars" onClick={toggleSidenav}></i>
+        <i
+          className="fas fa-bars"
+          onClick={() => toggleSidenav(!sidenavOpen)}
+        ></i>
       </div>
-      {messagesOpen && isAuthenticated && <Messages />}
+      {messagesOpen && <Messages />}
     </Fragment>
   );
 
@@ -85,7 +89,7 @@ const Navbar = () => {
         <h2 className="branding">
           <Link to="/">Creativefinder</Link>
         </h2>
-        <ul className="auth-links">
+        <ul className="links">
           <li className="link-item">
             <Link to="/log-in">Log In</Link>
           </li>
@@ -104,14 +108,18 @@ const Navbar = () => {
         <h2 className="branding">
           <Link to="/">Creativefinder</Link>
         </h2>
-        <i className="fas fa-bars" onClick={toggleSidenav}></i>
+        <i
+          className="fas fa-bars"
+          onClick={() => toggleSidenav(!sidenavOpen)}
+        ></i>
       </div>
     </Fragment>
   );
 
   return (
     <nav
-      className={`navbar${location.pathname === "/" ? " transparent-bg" : ""}`}
+      className={`navbar${width < breakpoint && sidenavOpen ? " active" : ""}`}
+      id={location.pathname === "/" ? "transparent-bg" : ""}
     >
       {isAuthenticated
         ? width < breakpoint

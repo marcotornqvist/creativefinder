@@ -2,6 +2,7 @@
 @import "/styles/main";
 
 // Components
+@import "./styles/components/filters";
 @import "./styles/components/messages";
 @import "./styles/components/search";
 @import "./styles/components/profile-dropdown";
@@ -14,3 +15,4 @@
 // Pages
 @import "./styles/pages/landing";
 @import "./styles/pages/creatives";
+@import "./styles/pages/login";

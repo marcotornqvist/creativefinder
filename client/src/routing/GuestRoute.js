@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import CreativeContext from "../context/creative/creativeContext";
+import AuthContext from "../context/auth/authContext";
 
 const GuestRoute = ({ component: Component, ...rest }) => {
-  const creativeContext = useContext(CreativeContext);
-  const { isAuthenticated } = creativeContext;
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
   return (
     <Route
       {...rest}

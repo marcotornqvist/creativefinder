@@ -4,181 +4,29 @@ import CreativeContext from "./creativeContext";
 import creativeReducer from "./creativeReducer";
 import {
   // GET_CREATIVES,
-  TOGGLE_SIDENAV,
-  TOGGLE_SEARCH,
-  TOGGLE_MESSAGES,
-  TOGGLE_PROFILE_DROPDOWN,
-  SEARCH_TEXT,
-  CLEAR_SEARCH
+  SET_SORT,
+  SET_FILTER,
+  REMOVE_FILTER,
+  RESET_FILTERS
 } from "../types";
 
 const CreativeState = props => {
   const initialState = {
-    results: [
-      {
-        id: 1,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "Contact",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 2,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "Contact",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 3,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "User",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 4,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "User",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 5,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "User",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 6,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "User",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      },
-      {
-        id: 7,
-        name: "Denzel Curry",
-        field: "Rap Artist",
-        status: "User",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
-      }
+    // Alphabetical Order
+    fields: [
+      "Guitarist",
+      "Videographer",
+      "Photographer",
+      "Pianist",
+      "3D Modeler",
+      "Music Producer",
+      "Web Developer"
     ],
-    notifications: [
-      {
-        id: 1,
-        name: "Denzel Curry",
-        message: "Has accepted your friend request.",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      },
-      {
-        id: 2,
-        name: "Denzel Curry",
-        message: "Has accepted your friend request.",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      },
-      {
-        id: 3,
-        name: "Denzel Curry",
-        message:
-          "Lorem ipsum dolor sit amet consectetur adipis elit. Non, soluta? Corporis mollitia",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      }
-    ],
-    chat: [
-      {
-        id: 1,
-        name: "Denzel Curry",
-        message: "Has accepted your friend request.",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      },
-      {
-        id: 2,
-        name: "Denzel Curry",
-        message: "Has accepted your friend request.",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      },
-      {
-        id: 3,
-        name: "Denzel Curry",
-        message:
-          "Lorem ipsum dolor sit amet consectetur adipis elit. Non, soluta? Corporis mollitia",
-        image:
-          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
-        createdAt: "One day ago"
-      }
-    ],
-    sidenavOpen: false,
-    searchOpen: false,
-    messagesOpen: false,
-    profileDropdownOpen: false,
-    searchText: "",
-    isAuthenticated: false
+    sort: "Recent",
+    filters: []
   };
 
   const [state, dispatch] = useReducer(creativeReducer, initialState);
-
-  // Toggle Sidenav
-  const toggleSidenav = () => {
-    dispatch({
-      type: TOGGLE_SIDENAV
-    });
-  };
-
-  // Set Search Text
-  const setSearchText = text => {
-    dispatch({
-      type: SEARCH_TEXT,
-      payload: text
-    });
-  };
-
-  // Toggle Search Component
-  const toggleSearch = toggle => {
-    dispatch({
-      type: TOGGLE_SEARCH,
-      payload: toggle
-    });
-  };
-
-  // Toggle Notification Component
-  const togglemessages = toggle => {
-    dispatch({
-      type: TOGGLE_MESSAGES,
-      payload: toggle
-    });
-  };
-
-  // Toggle Profile Dropdown Component
-  const toggleProfileDropdown = toggle => {
-    dispatch({
-      type: TOGGLE_PROFILE_DROPDOWN,
-      payload: toggle
-    });
-  };
-
-  // Clear Search
-  const clearSearch = () => {
-    dispatch({ type: CLEAR_SEARCH });
-  };
 
   // Get Creatives
   // const getStats = async () => {
@@ -190,26 +38,42 @@ const CreativeState = props => {
   //   });
   // };
 
+  // Set Sort
+  const setSort = value => {
+    dispatch({ type: SET_SORT, payload: value });
+  };
+
+  // Set Filter
+  const setFilter = item => {
+    dispatch({
+      type: SET_FILTER,
+      payload: item
+    });
+  };
+
+  // Remove Filter
+  const removeFilter = item => {
+    dispatch({
+      type: REMOVE_FILTER,
+      payload: item
+    });
+  };
+
+  // Reset Filters and Sort
+  const resetFilters = () => {
+    dispatch({ type: RESET_FILTERS });
+  };
+
   return (
     <CreativeContext.Provider
       value={{
-        results: state.results,
-        users: state.users,
-        notifications: state.notifications,
-        chat: state.chat,
-        sidenavOpen: state.sidenavOpen,
-        searchOpen: state.searchOpen,
-        messagesOpen: state.messagesOpen,
-        profileDropdownOpen: state.profileDropdownOpen,
-        searchText: state.searchText,
-        isAuthenticated: state.isAuthenticated,
-        toggleSidenav,
-        toggleSearch,
-        toggleProfileDropdown,
-        togglemessages,
-        setSearchText,
-        clearSearch
-        // getCreatives
+        fields: state.fields,
+        sort: state.sort,
+        filters: state.filters,
+        setSort,
+        setFilter,
+        removeFilter,
+        resetFilters
       }}
     >
       {props.children}

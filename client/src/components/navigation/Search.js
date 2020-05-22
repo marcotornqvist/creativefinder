@@ -1,13 +1,13 @@
 import React, { useContext, useRef } from "react";
-import CreativeContext from "../../context/creative/creativeContext";
+import NavigationContext from "../../context/navigation/navigationContext";
 import ViewportContext from "../../context/viewport/viewportContext";
 import Results from "./Results";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
 const Search = () => {
-  const creativeContext = useContext(CreativeContext);
+  const navigationContext = useContext(NavigationContext);
   const viewportContext = useContext(ViewportContext);
-  const { searchText, setSearchText, toggleSearch } = creativeContext;
+  const { searchText, setSearchText, toggleSearch } = navigationContext;
   const { width, breakpoint } = viewportContext;
 
   const ref = useRef();
