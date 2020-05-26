@@ -1,13 +1,6 @@
-.search {
-  position: absolute;
-  top: 90px;
-  right: 15px;
-  width: 250px;
-  height: 440px;
-  box-shadow: $box-shadow1;
-  background: $white;
-  border-radius: 6px;
-  padding: 0 15px;
+.search-page {
+  width: 100%;
+  border-radius: 3px;
 
   form {
     display: flex;
@@ -36,10 +29,6 @@
 
   .results {
     flex-direction: column;
-    position: absolute;
-    top: 55px;
-    border-radius: 0 0 6px 6px;
-    left: 0;
     width: 100%;
     height: 385px;
     overflow-y: scroll;
@@ -48,7 +37,7 @@
     background: $white;
 
     ul {
-      padding: 15px 15px 0;
+      padding: 15px 0 0;
       margin-bottom: 10px;
       height: 330px;
       overflow-y: scroll;
@@ -85,8 +74,6 @@
     }
 
     .btn-container {
-      padding: 0 15px;
-
       button {
         width: 100%;
         min-height: 35px;
@@ -100,4 +87,7 @@
       }
     }
   }
+}
+
+@media only screen and (min-width: 768px) {
 }

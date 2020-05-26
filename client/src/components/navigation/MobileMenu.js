@@ -39,6 +39,11 @@ const MobileMenu = () => {
         </Link>
       </li>
       <li>
+        <Link to="/search" onClick={() => toggleMobileMenu(false)}>
+          Search
+        </Link>
+      </li>
+      <li>
         <Link to="/" onClick={() => toggleMobileMenu(false)}>
           Log Out
         </Link>

@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
 import NavigationContext from "../context/navigation/navigationContext";
 import ViewportContext from "../context/viewport/viewportContext";
@@ -9,6 +9,7 @@ import Profile from "../components/navigation/Profile";
 import MobileMenu from "../components/navigation/MobileMenu";
 
 const Navbar = () => {
+  let location = useLocation();
   const authContext = useContext(AuthContext);
   const navigationContext = useContext(NavigationContext);
   const viewportContext = useContext(ViewportContext);
@@ -46,12 +47,14 @@ const Navbar = () => {
           >
             <i className="fas fa-bell"></i>
           </div>
-          <div
-            className="icon-box"
-            onClick={e => toggleSearch(!mobileMenuOpen)}
-          >
-            <i className="fas fa-search"></i>
-          </div>
+          {location.pathname !== "/search" && (
+            <div
+              className="icon-box"
+              onClick={e => toggleSearch(!mobileMenuOpen)}
+            >
+              <i className="fas fa-search"></i>
+            </div>
+          )}
           <img
             onClick={e => toggleProfile(!profileOpen)}
             src="https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"

@@ -7,6 +7,7 @@ import Forum from "./pages/Forum";
 import Settings from "./pages/Settings";
 import MyProfile from "./pages/MyProfile";
 import Landing from "./pages/Landing";
+import SearchPage from "./pages/SearchPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthState from "./context/auth/AuthState";
@@ -35,6 +36,7 @@ const App = () => {
                   <GuestRoute exact path="/log-in" component={Login} />
                   <GuestRoute exact path="/sign-up" component={Register} />
                   <PrivateRoute exact path="/settings" component={Settings} />
+                  <PrivateRoute exact path="/search" component={SearchPage} />
                   <PrivateRoute
                     exact
                     path="/my-profile"
