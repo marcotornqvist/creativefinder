@@ -1,25 +1,24 @@
 import React, { useContext, useRef } from "react";
 import NavigationContext from "../../context/navigation/navigationContext";
-import ViewportContext from "../../context/viewport/viewportContext";
 import Results from "./Results";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
 const Search = () => {
   const navigationContext = useContext(NavigationContext);
-  const viewportContext = useContext(ViewportContext);
   const { searchText, setSearchText, toggleSearch } = navigationContext;
-  const { width, breakpoint } = viewportContext;
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    width >= breakpoint && toggleSearch(false);
+    toggleSearch(false);
   });
 
   return (
     <div className="search" ref={ref}>
       <form className="search-form">
-        <i className="fas fa-search"></i>
+        <div className="search-icon">
+          <i className="fas fa-search"></i>
+        </div>
         <input
           type="text"
           value={searchText}
@@ -27,7 +26,7 @@ const Search = () => {
           onChange={e => setSearchText(e.target.value)}
         />
       </form>
-      {width < breakpoint ? searchText !== "" && <Results /> : <Results />}
+      <Results />
     </div>
   );
 };

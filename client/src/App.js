@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./layout/Navbar";
-import Sidenav from "./layout/Sidenav";
 import Creatives from "./pages/Creatives";
 import Creative from "./pages/Creative";
 import Forum from "./pages/Forum";
@@ -28,7 +27,6 @@ const App = () => {
             <Router>
               <div className="App">
                 <Navbar />
-                <Sidenav />
                 <Switch>
                   <GuestRoute exact path="/" component={Landing} />
                   <Route exact path="/creatives" component={Creatives} />

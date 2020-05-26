@@ -1,13 +1,13 @@
 // Color Variables
 $white: white;
 $red: #fb3640;
-$darkblue: #0d1321;
+$black: #0d1321;
 $green: #1b998b;
 $blue: #0a2463;
-$black: #2b2b2b;
 $grey: #4c535f;
 $lightgrey: #f4f5f7;
-$border-color: #f5f5f5;
+$border-color: #e9e6e6;
+$border-color2: #f5f5f5;
 
 // Box Shadow
 $box-shadow1: 0px 10px 50px rgba(0, 0, 0, 0.1);
@@ -31,14 +31,8 @@ html {
 
 .App {
   display: flex;
-  flex-flow: column;
+  justify-content: center;
   height: 100%;
-}
-
-.container {
-  flex: 1 1 auto;
-  margin-top: 60px;
-  padding: 50px 15px;
 }
 
 p {
@@ -81,8 +75,15 @@ i {
   cursor: pointer;
 }
 
+.container {
+  width: 100%;
+  padding: 50px 15px;
+  margin-top: 60px;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
+    width: 1400px;
     margin-top: 80px;
   }
 }

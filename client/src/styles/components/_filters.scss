@@ -1,2 +1,11 @@
 .filters {
+  width: 100%;
+  // DO THIS MOBILE RESPONSIVE FIRST REMEMBER THIS!!
+  .selections {
+    background: orange;
+  }
+
+  select {
+    width: 100%;
+  }
 }

@@ -1,19 +1,15 @@
 .messages {
   position: absolute;
-  top: 110px;
+  top: 60px;
   left: 0;
   right: 0;
   height: 440px;
-  margin: auto 15px;
   padding: 0 15px 0;
-  box-shadow: $box-shadow1;
   background: $white;
-  border-radius: 6px;
   z-index: 5;
-
-  .chat ul {
-    border-bottom: 1px solid $border-color;
-  }
+  overflow: hidden;
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
 
   .chat,
   .notifs {
@@ -27,7 +23,7 @@
     align-items: center;
     justify-content: space-between;
     height: 55px;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $border-color2;
     cursor: pointer;
 
     h3 {
@@ -42,7 +38,7 @@
       color: $black;
 
       &.new {
-        color: $darkblue;
+        color: $red;
       }
     }
   }
@@ -57,7 +53,6 @@
 
     li {
       display: flex;
-      align-items: flex-start;
       height: 55px;
 
       p {
@@ -86,7 +81,7 @@
     height: 385px;
 
     ul {
-      height: 340px;
+      height: 330px;
       opacity: 100%;
     }
   }
@@ -94,11 +89,14 @@
 
 @media only screen and (min-width: 768px) {
   .messages {
-    position: fixed;
-    top: 90px;
+    position: absolute;
     left: initial;
+    top: 90px;
     right: 15px;
     width: 250px;
     margin: 0;
+    border: none;
+    border-radius: 6px;
+    box-shadow: $box-shadow1;
   }
 }

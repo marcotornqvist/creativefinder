@@ -5,14 +5,12 @@ const Forum = () => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, login, logout } = authContext;
   return (
-    <div className="container">
-      <div className="login">
-        {!isAuthenticated ? (
-          <button onClick={() => login()}>Login</button>
-        ) : (
-          <button onClick={() => logout()}>logout</button>
-        )}
-      </div>
+    <div className="login">
+      {!isAuthenticated ? (
+        <button onClick={() => login()}>Login</button>
+      ) : (
+        <button onClick={() => logout()}>logout</button>
+      )}
     </div>
   );
 };

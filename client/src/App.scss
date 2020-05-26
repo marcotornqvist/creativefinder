@@ -2,6 +2,7 @@
 @import "/styles/main";
 
 // Components
+@import "./styles/components/mobile-menu";
 @import "./styles/components/filters";
 @import "./styles/components/messages";
 @import "./styles/components/search";
@@ -9,7 +10,6 @@
 
 // Layout
 @import "./styles/layout/navbar";
-@import "./styles/layout/sidenav";
 @import "./styles/layout/footer";
 
 // Pages

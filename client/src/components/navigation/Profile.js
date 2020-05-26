@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import NavigationContext from "../../context/navigation/navigationContext";
 import useOutsideClick from "../../hooks/useOutsideClick";
 
-const ProfileDropdown = () => {
+const Profile = () => {
   const navigationContext = useContext(NavigationContext);
-  const { toggleProfileDropdown } = navigationContext;
+  const { toggleProfile } = navigationContext;
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    toggleProfileDropdown(false);
+    toggleProfile(false);
   });
 
   return (
@@ -30,4 +30,4 @@ const ProfileDropdown = () => {
   );
 };
 
-export default ProfileDropdown;
+export default Profile;

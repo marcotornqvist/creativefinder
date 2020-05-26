@@ -2,12 +2,11 @@ import React, { useReducer } from "react";
 import NavigationContext from "./navigationContext";
 import navigationReducer from "./navigationReducer";
 import {
-  TOGGLE_SIDENAV,
+  TOGGLE_MOBILE_MENU,
   TOGGLE_SEARCH,
   TOGGLE_MESSAGES,
-  TOGGLE_PROFILE_DROPDOWN,
-  SEARCH_TEXT,
-  CLEAR_SEARCH
+  TOGGLE_PROFILE,
+  SEARCH_TEXT
 } from "../types";
 
 const NavigationState = props => {
@@ -124,22 +123,14 @@ const NavigationState = props => {
         createdAt: "One day ago"
       }
     ],
-    sidenavOpen: false,
     searchOpen: false,
     messagesOpen: false,
-    profileDropdownOpen: false,
+    profileOpen: false,
+    mobileMenuOpen: false,
     searchText: ""
   };
 
   const [state, dispatch] = useReducer(navigationReducer, initialState);
-
-  // Toggle Sidenav
-  const toggleSidenav = toggle => {
-    dispatch({
-      type: TOGGLE_SIDENAV,
-      payload: toggle
-    });
-  };
 
   // Set Search Text
   const setSearchText = text => {
@@ -157,6 +148,14 @@ const NavigationState = props => {
     });
   };
 
+  // Toggle Mobile Menu Component
+  const toggleMobileMenu = toggle => {
+    dispatch({
+      type: TOGGLE_MOBILE_MENU,
+      payload: toggle
+    });
+  };
+
   // Toggle Messages Component
   const toggleMessages = toggle => {
     dispatch({
@@ -165,17 +164,12 @@ const NavigationState = props => {
     });
   };
 
-  // Toggle Profile Dropdown Component
-  const toggleProfileDropdown = toggle => {
+  // Toggle Profile Component
+  const toggleProfile = toggle => {
     dispatch({
-      type: TOGGLE_PROFILE_DROPDOWN,
+      type: TOGGLE_PROFILE,
       payload: toggle
     });
-  };
-
-  // Clear Search
-  const clearSearch = () => {
-    dispatch({ type: CLEAR_SEARCH });
   };
 
   return (
@@ -184,17 +178,16 @@ const NavigationState = props => {
         results: state.results,
         notifications: state.notifications,
         chat: state.chat,
-        sidenavOpen: state.sidenavOpen,
+        mobileMenuOpen: state.mobileMenuOpen,
         searchOpen: state.searchOpen,
         messagesOpen: state.messagesOpen,
-        profileDropdownOpen: state.profileDropdownOpen,
+        profileOpen: state.profileOpen,
         searchText: state.searchText,
-        toggleSidenav,
+        toggleMobileMenu,
         toggleSearch,
-        toggleProfileDropdown,
+        toggleProfile,
         toggleMessages,
-        setSearchText,
-        clearSearch
+        setSearchText
       }}
     >
       {props.children}

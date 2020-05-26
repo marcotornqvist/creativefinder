@@ -1,6 +1,7 @@
 .landing {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   .showcase {
     display: flex;
@@ -26,9 +27,9 @@
 
       p {
         color: $white;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 500;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
       }
 
       button {
@@ -56,6 +57,7 @@
       margin-bottom: 50px;
       text-align: center;
       font-size: 32px;
+      color: $black;
 
       a {
         color: $blue;
@@ -149,6 +151,7 @@
 
 @media only screen and (min-width: 768px) {
   .landing {
+    margin-top: 80px;
     .showcase {
       .branding {
         margin-bottom: 0;

@@ -8,19 +8,16 @@ import img6 from "../img/producer.jpg";
 import img7 from "../img/webdev.jpg";
 import { Link } from "react-router-dom";
 import CreativeContext from "../context/creative/creativeContext";
-import NavigationContext from "../context/navigation/navigationContext";
 import ViewportContext from "../context/viewport/viewportContext";
 
 const Landing = () => {
   const creativeContext = useContext(CreativeContext);
-  const navigationContext = useContext(NavigationContext);
   const viewportContext = useContext(ViewportContext);
   const { setFilter } = creativeContext;
-  const { sidenavOpen } = navigationContext;
   const { width, breakpoint } = viewportContext;
 
   return (
-    <div className="landing" style={{ overflow: sidenavOpen ? "hidden" : "" }}>
+    <div className="landing">
       <div
         className="showcase"
         style={{ minHeight: width < breakpoint ? "100vh" : "550px" }}

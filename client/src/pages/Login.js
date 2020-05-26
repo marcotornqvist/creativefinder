@@ -4,11 +4,7 @@ import AuthContext from "../context/auth/authContext";
 const Login = () => {
   const authContext = useContext(AuthContext);
   const { login } = authContext;
-  return (
-    <div className="container">
-      <div className="login">login</div>
-    </div>
-  );
+  return <div className="login">{login}</div>;
 };
 
 export default Login;
