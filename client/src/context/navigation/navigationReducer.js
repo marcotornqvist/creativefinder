@@ -2,40 +2,43 @@ import {
   TOGGLE_SEARCH,
   TOGGLE_MESSAGES,
   TOGGLE_PROFILE,
-  SEARCH_TEXT,
-  TOGGLE_MOBILE_MENU
+  TOGGLE_SIDENAV,
+  SEARCH_TEXT
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case TOGGLE_MOBILE_MENU:
-      return {
-        ...state,
-        mobileMenuOpen: action.payload,
-        messagesOpen: false,
-        profileOpen: false
-      };
     case TOGGLE_SEARCH:
       return {
         ...state,
-        searchOpen: action.payload,
-        messagesOpen: false,
-        profileOpen: false
+        showSearch: action.payload,
+        showMessages: false,
+        showProfile: false,
+        showSidenav: false
       };
     case TOGGLE_MESSAGES:
       return {
         ...state,
-        messagesOpen: action.payload,
-        mobileMenuOpen: false,
-        searchOpen: false,
-        profileOpen: false
+        showSearch: false,
+        showMessages: action.payload,
+        showProfile: false,
+        showSidenav: false
       };
     case TOGGLE_PROFILE:
       return {
         ...state,
-        profileOpen: action.payload,
-        searchOpen: false,
-        messagesOpen: false
+        showSearch: false,
+        showMessages: false,
+        showProfile: action.payload,
+        showSidenav: false
+      };
+    case TOGGLE_SIDENAV:
+      return {
+        ...state,
+        showSearch: false,
+        showMessages: false,
+        showProfile: false,
+        showSidenav: action.payload
       };
     case SEARCH_TEXT:
       return {

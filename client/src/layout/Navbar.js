@@ -1,12 +1,12 @@
 import React, { useContext, Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/auth/authContext";
-import NavigationContext from "../context/navigation/navigationContext";
 import ViewportContext from "../context/viewport/viewportContext";
+import NavigationContext from "../context/navigation/navigationContext";
 import Search from "../components/navigation/Search";
 import Messages from "../components/navigation/Messages";
 import Profile from "../components/navigation/Profile";
-import MobileMenu from "../components/navigation/MobileMenu";
+import Sidenav from "../components/navigation/Sidenav";
 
 const Navbar = () => {
   let location = useLocation();
@@ -15,22 +15,22 @@ const Navbar = () => {
   const viewportContext = useContext(ViewportContext);
   const { isAuthenticated } = authContext;
   const {
-    toggleMobileMenu,
+    showSearch,
+    showMessages,
+    showProfile,
+    showSidenav,
     toggleSearch,
     toggleMessages,
     toggleProfile,
-    mobileMenuOpen,
-    searchOpen,
-    messagesOpen,
-    profileOpen
+    toggleSidenav
   } = navigationContext;
   const { width, breakpoint } = viewportContext;
 
   const Desktop = (
     <Fragment>
-      <h2 className="branding">
-        <Link to="/creatives">Creativefinder</Link>
-      </h2>
+      <Link className="branding" to="/">
+        Creativefinder
+      </Link>
       <div className="menu">
         <ul className="links">
           <li className="link-item">
@@ -43,28 +43,25 @@ const Navbar = () => {
         <div className="dropdown-icons">
           <div
             className="icon-box"
-            onClick={e => toggleMessages(!messagesOpen)}
+            onClick={() => toggleMessages(!showMessages)}
           >
             <i className="fas fa-bell"></i>
           </div>
           {location.pathname !== "/search" && (
-            <div
-              className="icon-box"
-              onClick={e => toggleSearch(!mobileMenuOpen)}
-            >
+            <div className="icon-box" onClick={() => toggleSearch(!showSearch)}>
               <i className="fas fa-search"></i>
             </div>
           )}
           <img
-            onClick={e => toggleProfile(!profileOpen)}
+            onClick={() => toggleProfile(!showProfile)}
             src="https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg"
             alt="profile"
           />
         </div>
       </div>
-      {searchOpen && <Search />}
-      {messagesOpen && <Messages />}
-      {profileOpen && <Profile />}
+      {showSearch && <Search />}
+      {showMessages && <Messages />}
+      {showProfile && <Profile />}
     </Fragment>
   );
 
@@ -72,22 +69,25 @@ const Navbar = () => {
     <Fragment>
       <i
         className="fas fa-bell"
-        onClick={e => toggleMessages(!messagesOpen)}
+        onClick={() => toggleMessages(!showMessages)}
       ></i>
-      <h2 className="branding">
-        <Link to="/creatives">Creativefinder</Link>
-      </h2>
-      <i className="fas fa-bars" onClick={e => toggleMobileMenu(true)}></i>
-      {messagesOpen && <Messages />}
-      {mobileMenuOpen && <MobileMenu />}
+      <Link className="branding" to="/">
+        Creativefinder
+      </Link>
+      <i
+        className="fas fa-bars"
+        onClick={() => toggleSidenav(!showSidenav)}
+      ></i>
+      {showMessages && <Messages />}
+      {showSidenav && <Sidenav />}
     </Fragment>
   );
 
   const GuestDesktop = (
     <Fragment>
-      <h2 className="branding">
-        <Link to="/">Creativefinder</Link>
-      </h2>
+      <Link className="branding" to="/">
+        Creativefinder
+      </Link>
       <div className="menu">
         <ul className="links">
           <li className="link-item">
@@ -103,13 +103,16 @@ const Navbar = () => {
 
   const GuestMobile = (
     <Fragment>
-      <h2 className="branding">
-        <Link to="/">Creativefinder</Link>
-      </h2>
+      <Link className="branding" to="/">
+        Creativefinder
+      </Link>
       <div className="menu">
-        <i className="fas fa-bars" onClick={e => toggleMobileMenu(true)}></i>
+        <i
+          className="fas fa-bars"
+          onClick={() => toggleSidenav(!showSidenav)}
+        ></i>
       </div>
-      {mobileMenuOpen && <MobileMenu />}
+      {showSidenav && <Sidenav />}
     </Fragment>
   );
 

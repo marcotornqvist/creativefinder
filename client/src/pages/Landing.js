@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import img1 from "../img/modeling.jpg";
 import img2 from "../img/videographer.jpg";
 import img3 from "../img/photographer.jpg";
@@ -7,6 +7,7 @@ import img5 from "../img/piano.jpg";
 import img6 from "../img/producer.jpg";
 import img7 from "../img/webdev.jpg";
 import { Link } from "react-router-dom";
+import Box from "../components/landing/Box";
 import CreativeContext from "../context/creative/creativeContext";
 import ViewportContext from "../context/viewport/viewportContext";
 
@@ -16,11 +17,46 @@ const Landing = () => {
   const { setFilter } = creativeContext;
   const { width, breakpoint } = viewportContext;
 
+  const [subCategories] = useState([
+    {
+      name: "3D Modeler",
+      img: img1
+    },
+    {
+      name: "Videographer",
+      img: img2
+    },
+    {
+      name: "Photographer",
+      img: img3
+    },
+    {
+      name: "Guitar",
+      img: img4
+    },
+    {
+      name: "Pianist",
+      img: img5
+    },
+    {
+      name: "Music Producer",
+      img: img6
+    },
+    {
+      name: "Web Developer",
+      img: img7
+    }
+  ]);
+
+  // TODO: Add the correct functionality for the filtering on the landing page
+
   return (
     <div className="landing">
       <div
         className="showcase"
-        style={{ minHeight: width < breakpoint ? "100vh" : "550px" }}
+        style={{
+          minHeight: width < breakpoint ? "100vh" : "550px"
+        }}
       >
         <div className="branding">
           <h1>Creativefinder</h1>
@@ -36,60 +72,12 @@ const Landing = () => {
           <Link to="/creatives">more</Link>
         </h2>
         <div className="boxes">
-          <Link to="/creatives" onClick={() => setFilter("3D Modeler")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>3D Modeler</h3>
-              <img src={img1} alt="3D Modeler" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Videographer")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Videographer</h3>
-              <img src={img2} alt="Videographer" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Photographer")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Photographer</h3>
-              <img src={img3} alt="Photographer" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Guitarist")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Guitarist</h3>
-              <img src={img4} alt="Guitarist" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Pianist")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Pianist</h3>
-              <img src={img5} alt="Pianist" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Music Producer")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Music Producer</h3>
-              <img src={img6} alt="Music Producer" />
-            </div>
-          </Link>
-          <Link to="/creatives" onClick={() => setFilter("Web Developer")}>
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Web Developer</h3>
-              <img src={img7} alt="Web Developer" />
-            </div>
-          </Link>
-          <Link to="/creatives">
-            <div className="box">
-              <div className="overlay"></div>
-              <h3>Something Else...</h3>
-            </div>
+          {subCategories.map((item, index) => (
+            <Box item={item} key={index} onClick={() => setFilter(item.name)} />
+          ))}
+          <Link to="/creatives" className="box">
+            <div className="overlay"></div>
+            <h3>Something Else...</h3>
           </Link>
         </div>
       </div>

@@ -1,8 +1,39 @@
 .creatives {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: $black;
+    }
+
+    button {
+      border: none;
+      padding: 0 10px;
+      background: $white;
+      cursor: pointer;
+      color: $grey;
+      outline: none;
+    }
+  }
 
   ul {
     display: flex;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .creatives {
+    button {
+      display: none;
+    }
   }
 }

@@ -6,7 +6,6 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 const Profile = () => {
   const navigationContext = useContext(NavigationContext);
   const { toggleProfile } = navigationContext;
-
   const ref = useRef();
 
   useOutsideClick(ref, () => {
@@ -16,13 +15,13 @@ const Profile = () => {
   return (
     <div className="profile-dropdown" ref={ref}>
       <ul>
-        <li>
+        <li onClick={() => toggleProfile(false)}>
           <Link to="/my-profile">My Profile</Link>
         </li>
-        <li>
+        <li onClick={() => toggleProfile(false)}>
           <Link to="/settings">User Settings</Link>
         </li>
-        <li>
+        <li onClick={() => toggleProfile(false)}>
           <Link to="/">Log Out</Link>
         </li>
       </ul>

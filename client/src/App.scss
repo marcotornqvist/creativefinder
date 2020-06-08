@@ -2,11 +2,11 @@
 @import "/styles/main";
 
 // Components
-@import "./styles/components/mobile-menu";
-@import "./styles/components/filters";
-@import "./styles/components/messages";
 @import "./styles/components/search";
+@import "./styles/components/messages";
 @import "./styles/components/profile-dropdown";
+@import "./styles/components/sidenav";
+@import "./styles/components/filters";
 
 // Layout
 @import "./styles/layout/navbar";

@@ -1,8 +1,8 @@
 import {
   // GET_CREATIVES,
   SET_SORT,
-  SET_FILTER,
-  REMOVE_FILTER,
+  SET_CATEGORY,
+  SET_SUBCATEGORIES,
   RESET_FILTERS
 } from "../types";
 
@@ -13,25 +13,24 @@ export default (state, action) => {
         ...state,
         sort: action.payload
       };
-    case SET_FILTER:
+    case SET_CATEGORY:
+      return {
+        ...state,
+        category: action.payload !== state.category ? action.payload : null
+      };
+    case SET_SUBCATEGORIES:
       const filterExists = state.fields.find(item => item === action.payload);
       const newFilter = filterExists === action.payload && action.payload;
       return {
         ...state,
-        fields: state.fields.filter(item => item !== action.payload),
-        filters: [newFilter, ...state.filters]
-      };
-    case REMOVE_FILTER:
-      return {
-        ...state,
-        filters: state.filters.filter(item => item !== action.payload),
-        fields: [action.payload, ...state.fields]
+        subCategories: [action.payload, ...state.subCategories]
       };
     case RESET_FILTERS:
       return {
         ...state,
         sort: "Recent",
-        filters: null
+        category: null,
+        subCategory: null
       };
     default:
       return state;

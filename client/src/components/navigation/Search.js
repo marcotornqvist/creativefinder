@@ -5,7 +5,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 
 const Search = () => {
   const navigationContext = useContext(NavigationContext);
-  const { searchText, setSearchText, toggleSearch } = navigationContext;
+  const { toggleSearch, searchText, setSearchText } = navigationContext;
 
   const ref = useRef();
 

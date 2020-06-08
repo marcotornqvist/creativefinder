@@ -6,7 +6,7 @@ import { LOGIN, LOGOUT } from "../types";
 
 const AuthState = props => {
   const initialState = {
-    isAuthenticated: false
+    isAuthenticated: true
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);

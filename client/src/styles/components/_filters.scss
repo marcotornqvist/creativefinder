@@ -1,11 +1,122 @@
-.filters {
-  width: 100%;
-  // DO THIS MOBILE RESPONSIVE FIRST REMEMBER THIS!!
-  .selections {
-    background: orange;
-  }
+.creatives .filters {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
 
-  select {
-    width: 100%;
+  .dropdowns {
+    .menu-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+      width: 100%;
+      padding: 0 10px;
+      margin-bottom: 10px;
+      border: 1px solid $border-color;
+      border-radius: 3px;
+      background: $white;
+      cursor: pointer;
+
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        color: $grey;
+      }
+
+      i {
+        color: $red;
+        font-size: 18px;
+      }
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 40px;
+      border: 1px solid $border-color;
+      border-radius: 3px;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        max-height: 250px;
+        width: 100%;
+        overflow-y: scroll;
+        padding: 15px;
+
+        li {
+          min-height: 40px;
+
+          &:last-child {
+            min-height: 20px;
+          }
+
+          .content {
+            display: flex;
+            align-items: center;
+          }
+
+          .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 18px;
+            height: 18px;
+            padding: 5px;
+            border-radius: 2px;
+            margin-right: 10px;
+            border: 1px solid $border-color;
+
+            i {
+              color: $white;
+              font-size: 13px;
+            }
+
+            &.selected {
+              border: none;
+              background: $red;
+            }
+          }
+
+          span {
+            font-size: 14px;
+            font-weight: 400;
+            color: $black;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 14px;
+        font-weight: 400;
+        color: $grey;
+      }
+    }
+
+    .open {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .creatives .filters {
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid $border-color2;
+
+    .dropdowns {
+      display: flex;
+
+      .menu-button {
+        min-width: 140px;
+        margin: 0 10px 0 0;
+      }
+
+      .menu-button:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

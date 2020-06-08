@@ -73,6 +73,7 @@
           font-size: 13px;
           color: $black;
           white-space: nowrap;
+          font-weight: 500;
         }
 
         span {
@@ -97,6 +98,7 @@
         background: $red;
         color: white;
         outline: none;
+        cursor: pointer;
       }
     }
   }

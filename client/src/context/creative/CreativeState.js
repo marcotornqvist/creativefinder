@@ -5,25 +5,54 @@ import creativeReducer from "./creativeReducer";
 import {
   // GET_CREATIVES,
   SET_SORT,
-  SET_FILTER,
-  REMOVE_FILTER,
+  SET_CATEGORY,
+  SET_SUBCATEGORIES,
   RESET_FILTERS
 } from "../types";
 
 const CreativeState = props => {
   const initialState = {
-    // Alphabetical Order
-    fields: [
-      "Guitarist",
-      "Videographer",
-      "Photographer",
-      "Pianist",
-      "3D Modeler",
-      "Music Producer",
-      "Web Developer"
+    // When done with this list sort it alphabetically with some tool or manually!
+    categories: [
+      {
+        name: "Music",
+        subCategories: [
+          "Cellists",
+          "Drummers",
+          "Mixing & Mastering",
+          "Music Producer",
+          "Pianist",
+          "Rappers",
+          "Singers",
+          "Song Writers",
+          "Violinist",
+          "Guitarists"
+        ]
+      },
+      {
+        name: "Technology",
+        subCategories: [
+          "Web Developer",
+          "Game Developer",
+          "Data Analysts",
+          "Data Scientist"
+        ]
+      },
+      {
+        name: "Design",
+        subCategories: [
+          "3D Modeler",
+          "Logo Designer",
+          "Photographer",
+          "UX Designer",
+          "Web Designer",
+          "Graphic Designer"
+        ]
+      }
     ],
     sort: "Recent",
-    filters: []
+    category: "Music",
+    subCategories: []
   };
 
   const [state, dispatch] = useReducer(creativeReducer, initialState);
@@ -39,22 +68,22 @@ const CreativeState = props => {
   // };
 
   // Set Sort
-  const setSort = value => {
-    dispatch({ type: SET_SORT, payload: value });
+  const setSort = item => {
+    dispatch({ type: SET_SORT, payload: item });
   };
 
-  // Set Filter
-  const setFilter = item => {
+  // Set Category
+  const setCategory = item => {
     dispatch({
-      type: SET_FILTER,
+      type: SET_CATEGORY,
       payload: item
     });
   };
 
-  // Remove Filter
-  const removeFilter = item => {
+  // Set Sub Categories
+  const setSubCategories = item => {
     dispatch({
-      type: REMOVE_FILTER,
+      type: SET_SUBCATEGORIES,
       payload: item
     });
   };
@@ -67,12 +96,13 @@ const CreativeState = props => {
   return (
     <CreativeContext.Provider
       value={{
-        fields: state.fields,
+        categories: state.categories,
         sort: state.sort,
-        filters: state.filters,
+        category: state.category,
+        subCategories: state.subCategories,
         setSort,
-        setFilter,
-        removeFilter,
+        setCategory,
+        setSubCategories,
         resetFilters
       }}
     >

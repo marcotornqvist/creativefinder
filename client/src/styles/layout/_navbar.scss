@@ -21,9 +21,11 @@
     padding: 0 15px;
   }
 
-  h2 a {
+  .branding {
     font-size: 24px;
     color: $red;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   .menu {
@@ -41,7 +43,8 @@
     }
   }
 
-  i {
+  i.fa-bell,
+  i.fa-bars {
     font-size: 20px;
     color: $red;
     cursor: pointer;
@@ -68,8 +71,8 @@
         justify-content: center;
         margin-left: 15px;
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         background: $red;
         cursor: pointer;
 
@@ -85,8 +88,8 @@
 
       img {
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         cursor: pointer;
         margin-left: 15px;
       }

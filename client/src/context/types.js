@@ -1,12 +1,12 @@
 // export const GET_CREATIVES = "GET_CREATIVES";
-export const TOGGLE_MOBILE_MENU = "TOGGLE_MOBILE_MENU";
 export const TOGGLE_SEARCH = "TOGGLE_SEARCH";
 export const TOGGLE_MESSAGES = "TOGGLE_MESSAGES";
 export const TOGGLE_PROFILE = "TOGGLE_PROFILE";
+export const TOGGLE_SIDENAV = "TOGGLE_SIDENAV";
 export const SEARCH_TEXT = "SEARCH_TEXT";
 export const SET_SORT = "SET_SORT";
-export const SET_FILTER = "SET_FILTER";
-export const REMOVE_FILTER = "REMOVE_FILTER";
-export const RESET_FILTERS = "REMOVE_FILTERS";
+export const SET_CATEGORY = "SET_CATEGORY";
+export const SET_SUBCATEGORIES = "SET_SUBCATEGORIES";
+export const RESET_FILTERS = "RESET_FILTERS";
 export const LOGOUT = "LOGOUT";
 export const LOGIN = "LOGIN";

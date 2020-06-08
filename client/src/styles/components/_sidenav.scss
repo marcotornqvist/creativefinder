@@ -1,0 +1,51 @@
+.sidenav {
+  position: fixed;
+  top: 0px;
+  right: 0;
+  padding: 20px 40px;
+  width: 80%;
+  height: 100%;
+  background: white;
+  z-index: 5;
+  border-left: 1px solid $border-color;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 35px;
+
+    i {
+      color: $red;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    padding-top: 0px;
+
+    li {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 0 0 35px;
+
+      a {
+        color: $black;
+        font-size: 16px;
+        font-weight: 400;
+
+        &:hover {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}

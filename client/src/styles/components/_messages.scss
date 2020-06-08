@@ -1,9 +1,9 @@
 .messages {
-  position: absolute;
+  position: fixed;
   top: 60px;
   left: 0;
   right: 0;
-  height: 440px;
+  height: calc(100% - 60px);
   padding: 0 15px 0;
   background: $white;
   z-index: 5;
@@ -14,8 +14,6 @@
   .chat,
   .notifs {
     overflow: hidden;
-    height: 55px;
-    transition: height 1s;
   }
 
   .header {
@@ -44,26 +42,19 @@
   }
 
   ul {
-    height: 0;
-    opacity: 0;
     overflow: scroll;
-    transition: height 1s;
-    transition: opacity 1s;
-    padding: 15px 0 0 0;
+    opacity: 0;
+    height: 0;
+
+    li:first-child {
+      padding-top: 15px;
+      height: 75px;
+    }
 
     li {
       display: flex;
       height: 55px;
-
-      p {
-        font-size: 13px;
-        color: $grey;
-
-        span {
-          color: $black;
-          font-weight: 500;
-        }
-      }
+      overflow: hidden;
 
       .img-box {
         margin-right: 10px;
@@ -74,15 +65,17 @@
           border-radius: 50%;
         }
       }
-    }
-  }
 
-  .open {
-    height: 385px;
+      p {
+        padding-top: 2px;
+        font-size: 13px;
+        color: $grey;
 
-    ul {
-      height: 330px;
-      opacity: 100%;
+        span {
+          color: $black;
+          font-weight: 500;
+        }
+      }
     }
   }
 }
@@ -94,6 +87,7 @@
     top: 90px;
     right: 15px;
     width: 250px;
+    height: 440px;
     margin: 0;
     border: none;
     border-radius: 6px;
