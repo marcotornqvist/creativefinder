@@ -7,6 +7,7 @@ import {
   SET_SORT,
   SET_CATEGORY,
   SET_SUBCATEGORIES,
+  SET_QUICKCATEGORY,
   RESET_FILTERS
 } from "../types";
 
@@ -15,8 +16,9 @@ const CreativeState = props => {
     // When done with this list sort it alphabetically with some tool or manually!
     categories: [
       {
+        id: 1,
         name: "Music",
-        subCategories: [
+        sub: [
           "Cellists",
           "Drummers",
           "Mixing & Mastering",
@@ -30,8 +32,9 @@ const CreativeState = props => {
         ]
       },
       {
+        id: 2,
         name: "Technology",
-        subCategories: [
+        sub: [
           "Web Developer",
           "Game Developer",
           "Data Analysts",
@@ -39,9 +42,11 @@ const CreativeState = props => {
         ]
       },
       {
-        name: "Design",
-        subCategories: [
+        id: 3,
+        name: "Design & Media",
+        sub: [
           "3D Modeler",
+          "Videographer",
           "Logo Designer",
           "Photographer",
           "UX Designer",
@@ -51,7 +56,7 @@ const CreativeState = props => {
       }
     ],
     sort: "Recent",
-    category: "Music",
+    category: null,
     subCategories: []
   };
 
@@ -80,10 +85,18 @@ const CreativeState = props => {
     });
   };
 
-  // Set Sub Categories
+  // Set Sub Category
   const setSubCategories = item => {
     dispatch({
       type: SET_SUBCATEGORIES,
+      payload: item
+    });
+  };
+
+  // Sets Category & Subcategory from the landing page
+  const setQuickCategory = item => {
+    dispatch({
+      type: SET_QUICKCATEGORY,
       payload: item
     });
   };
@@ -103,6 +116,7 @@ const CreativeState = props => {
         setSort,
         setCategory,
         setSubCategories,
+        setQuickCategory,
         resetFilters
       }}
     >

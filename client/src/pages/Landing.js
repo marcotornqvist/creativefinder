@@ -14,35 +14,42 @@ import ViewportContext from "../context/viewport/viewportContext";
 const Landing = () => {
   const creativeContext = useContext(CreativeContext);
   const viewportContext = useContext(ViewportContext);
-  const { setFilter } = creativeContext;
+  const { resetFilters } = creativeContext;
   const { width, breakpoint } = viewportContext;
 
   const [subCategories] = useState([
     {
+      categoryName: "Design & Media",
       name: "3D Modeler",
       img: img1
     },
     {
+      categoryName: "Design & Media",
       name: "Videographer",
       img: img2
     },
     {
+      categoryName: "Design & Media",
       name: "Photographer",
       img: img3
     },
     {
-      name: "Guitar",
+      categoryName: "Music",
+      name: "Guitarists",
       img: img4
     },
     {
+      categoryName: "Music",
       name: "Pianist",
       img: img5
     },
     {
+      categoryName: "Music",
       name: "Music Producer",
       img: img6
     },
     {
+      categoryName: "Technology",
       name: "Web Developer",
       img: img7
     }
@@ -66,19 +73,20 @@ const Landing = () => {
           </Link>
         </div>
       </div>
-      <div className="content">
+      <div className="quick-selection">
         <h2>
           Collaborate with Musicians, Designers &{" "}
           <Link to="/creatives">more</Link>
         </h2>
         <div className="boxes">
           {subCategories.map((item, index) => (
-            <Box item={item} key={index} onClick={() => setFilter(item.name)} />
+            <Box item={item} key={index} />
           ))}
-          <Link to="/creatives" className="box">
-            <div className="overlay"></div>
-            <h3>Something Else...</h3>
-          </Link>
+          <div className="box no-item" onClick={() => resetFilters()}>
+            <Link to="/creatives">
+              <h3>Something Else...</h3>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

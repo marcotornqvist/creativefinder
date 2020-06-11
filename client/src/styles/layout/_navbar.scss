@@ -55,6 +55,10 @@
   .navbar {
     height: 80px;
 
+    .navbar-container {
+      padding: 0 30px;
+    }
+
     .menu {
       display: flex;
       align-items: center;

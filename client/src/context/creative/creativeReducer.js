@@ -3,6 +3,7 @@ import {
   SET_SORT,
   SET_CATEGORY,
   SET_SUBCATEGORIES,
+  SET_QUICKCATEGORY,
   RESET_FILTERS
 } from "../types";
 
@@ -14,16 +15,43 @@ export default (state, action) => {
         sort: action.payload
       };
     case SET_CATEGORY:
+      const categoryExists =
+        state.category !== null && state.category.id === action.payload.id;
+      let newObject = state.categories.filter(
+        item => item.id === action.payload.id
+      );
+      newObject = newObject[0];
       return {
         ...state,
-        category: action.payload !== state.category ? action.payload : null
+        category: categoryExists ? null : newObject,
+        subCategories: []
       };
     case SET_SUBCATEGORIES:
-      const filterExists = state.fields.find(item => item === action.payload);
-      const newFilter = filterExists === action.payload && action.payload;
+      const subCategoryExists = state.subCategories.includes(action.payload);
+      const removeFilter = state.subCategories.filter(
+        el => el !== action.payload
+      );
+
       return {
         ...state,
-        subCategories: [action.payload, ...state.subCategories]
+        subCategories: subCategoryExists
+          ? removeFilter
+          : [action.payload, ...state.subCategories]
+      };
+    case SET_QUICKCATEGORY:
+      let category = state.categories.filter(
+        item => item.name === action.payload.categoryName
+      );
+      category = category[0];
+
+      const subCategories = category.sub.filter(
+        item => item === action.payload.name
+      );
+
+      return {
+        ...state,
+        category,
+        subCategories
       };
     case RESET_FILTERS:
       return {

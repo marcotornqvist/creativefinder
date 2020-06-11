@@ -59,9 +59,9 @@ const Navbar = () => {
           />
         </div>
       </div>
-      {showSearch && <Search />}
-      {showMessages && <Messages />}
-      {showProfile && <Profile />}
+      <Search />
+      <Messages />
+      <Profile />
     </Fragment>
   );
 
@@ -78,8 +78,8 @@ const Navbar = () => {
         className="fas fa-bars"
         onClick={() => toggleSidenav(!showSidenav)}
       ></i>
-      {showMessages && <Messages />}
-      {showSidenav && <Sidenav />}
+      <Messages />
+      <Sidenav />
     </Fragment>
   );
 
@@ -112,7 +112,7 @@ const Navbar = () => {
           onClick={() => toggleSidenav(!showSidenav)}
         ></i>
       </div>
-      {showSidenav && <Sidenav />}
+      <Sidenav />
     </Fragment>
   );
 

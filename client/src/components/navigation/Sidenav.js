@@ -1,20 +1,32 @@
-import React, { useContext, Fragment, useRef } from "react";
+import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import AuthContext from "../../context/auth/authContext";
 import NavigationContext from "../../context/navigation/navigationContext";
-import useOutsideClick from "../../hooks/useOutsideClick";
+
+const backdrop = {
+  visible: { opacity: 1, transition: { duration: 0.5, type: "tween" } },
+  hidden: { opacity: 0, transition: { duration: 0.5, type: "tween" } }
+};
+
+const sidenav = {
+  hidden: {
+    x: "786px",
+    opacity: 0,
+    transition: { duration: 1, type: "tween" }
+  },
+  visible: {
+    x: "0",
+    opacity: 1,
+    transition: { duration: 0.5, type: "tween" }
+  }
+};
 
 const Sidenav = () => {
   const authContext = useContext(AuthContext);
   const navigationContext = useContext(NavigationContext);
   const { isAuthenticated } = authContext;
-  const { toggleSidenav } = navigationContext;
-
-  const ref = useRef();
-
-  useOutsideClick(ref, () => {
-    toggleSidenav(false);
-  });
+  const { toggleSidenav, showSidenav } = navigationContext;
 
   const userLinks = (
     <Fragment>
@@ -77,15 +89,38 @@ const Sidenav = () => {
   );
 
   return (
-    <div className="sidenav" ref={ref}>
-      <div className="header">
-        <h2 className="branding" onClick={() => toggleSidenav(false)}>
-          <Link to="/">Creativefinder</Link>
-        </h2>
-        <i className="fas fa-times" onClick={() => toggleSidenav(false)}></i>
-      </div>
-      <ul>{isAuthenticated ? userLinks : guestLinks}</ul>
-    </div>
+    <AnimatePresence exitBeforeEnter>
+      {showSidenav && (
+        <Fragment>
+          <motion.div
+            className="backdrop"
+            variants={backdrop}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            onClick={() => toggleSidenav(false)}
+          ></motion.div>
+          <motion.div
+            className="sidenav"
+            variants={sidenav}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <div className="header">
+              <Link to="/" onClick={() => toggleSidenav(false)}>
+                Creativefinder
+              </Link>
+              <i
+                className="fas fa-times"
+                onClick={() => toggleSidenav(false)}
+              ></i>
+            </div>
+            <ul>{isAuthenticated ? userLinks : guestLinks}</ul>
+          </motion.div>
+        </Fragment>
+      )}
+    </AnimatePresence>
   );
 };
 
