@@ -12,7 +12,7 @@ export default (state, action) => {
     case SET_SORT:
       return {
         ...state,
-        sort: action.payload
+        sort: action.payload === "remove" ? "Recent" : action.payload
       };
     case SET_CATEGORY:
       const categoryExists =
@@ -24,19 +24,19 @@ export default (state, action) => {
       return {
         ...state,
         category: categoryExists ? null : newObject,
-        subCategories: []
+        subcategories: []
       };
     case SET_SUBCATEGORIES:
-      const subCategoryExists = state.subCategories.includes(action.payload);
-      const removeFilter = state.subCategories.filter(
+      const subcategoryExists = state.subcategories.includes(action.payload);
+      const removeFilter = state.subcategories.filter(
         el => el !== action.payload
       );
 
       return {
         ...state,
-        subCategories: subCategoryExists
+        subcategories: subcategoryExists
           ? removeFilter
-          : [action.payload, ...state.subCategories]
+          : [action.payload, ...state.subcategories]
       };
     case SET_QUICKCATEGORY:
       let category = state.categories.filter(
@@ -44,21 +44,21 @@ export default (state, action) => {
       );
       category = category[0];
 
-      const subCategories = category.sub.filter(
+      const subcategories = category.sub.filter(
         item => item === action.payload.name
       );
 
       return {
         ...state,
         category,
-        subCategories
+        subcategories
       };
     case RESET_FILTERS:
       return {
         ...state,
         sort: "Recent",
         category: null,
-        subCategory: null
+        subcategories: []
       };
     default:
       return state;

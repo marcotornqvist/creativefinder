@@ -17,7 +17,7 @@ const Landing = () => {
   const { resetFilters } = creativeContext;
   const { width, breakpoint } = viewportContext;
 
-  const [subCategories] = useState([
+  const [subcategories] = useState([
     {
       categoryName: "Design & Media",
       name: "3D Modeler",
@@ -79,7 +79,7 @@ const Landing = () => {
           <Link to="/creatives">more</Link>
         </h2>
         <div className="boxes">
-          {subCategories.map((item, index) => (
+          {subcategories.map((item, index) => (
             <Box item={item} key={index} />
           ))}
           <div className="box no-item" onClick={() => resetFilters()}>

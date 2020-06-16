@@ -8,8 +8,8 @@
   background: $white;
   z-index: 5;
   overflow: hidden;
-  border-bottom: 1px solid $border-color;
-  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color1;
+  border-top: 1px solid $border-color1;
 
   .chat,
   .notifs {
@@ -56,14 +56,11 @@
       height: 55px;
       overflow: hidden;
 
-      .img-box {
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
         margin-right: 10px;
-
-        img {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-        }
       }
 
       p {

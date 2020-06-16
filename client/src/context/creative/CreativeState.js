@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { v4 as uuidv4 } from "uuid";
 // import axios from "axios";
 import CreativeContext from "./creativeContext";
 import creativeReducer from "./creativeReducer";
@@ -57,7 +58,164 @@ const CreativeState = props => {
     ],
     sort: "Recent",
     category: null,
-    subCategories: []
+    subcategories: [],
+    creatives: [
+      {
+        userID: 1,
+        name: "Denzel Curry",
+        username: "denzelcurraay",
+        subcategories: ["Rapper"],
+        reviews: [
+          {
+            id: uuidv4(),
+            userID: 4,
+            name: "Jane Doe",
+            username: "janedoe",
+            comment: "",
+            stars: 5.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 3,
+            name: "John Doe",
+            username: "johndoe",
+            comment: "",
+            stars: 5.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 2,
+            name: "JID",
+            username: "Jidofficial",
+            comment: "",
+            stars: 5.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          }
+        ],
+        profileImg:
+          "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+        createdAt: "2020-06-12T11:42:26+0000"
+      },
+      {
+        userID: 2,
+        name: "JID",
+        username: "Jidofficial",
+        category: "Music",
+        subcategories: ["Rapper"],
+        reviews: [
+          {
+            id: uuidv4(),
+            userID: 4,
+            name: "Jane Doe",
+            username: "janedoe",
+            comment: "",
+            stars: 4.5,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 3,
+            name: "John Doe",
+            username: "johndoe",
+            comment: "",
+            stars: 3.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 1,
+            name: "Denzel Curry",
+            username: "denzelcurry",
+            comment: "",
+            stars: 4.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          }
+        ],
+        profileImg:
+          "https://vignette.wikia.nocookie.net/hip-hop-music/images/0/09/Jid.jpg/revision/latest?cb=20190331124300",
+        createdAt: "2020-05-18T11:42:26+0000"
+      },
+      {
+        userID: 3,
+        name: "John Doe",
+        username: "johndoe",
+        category: "Technology",
+        subcategories: ["Web Developer"],
+        reviews: [
+          {
+            id: uuidv4(),
+            userID: 4,
+            name: "Jane Doe",
+            username: "janedoe",
+            comment: "",
+            stars: 1.5,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 2,
+            name: "JID",
+            username: "Jidofficial",
+            comment: "",
+            stars: 2.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 1,
+            name: "Denzel Curry",
+            username: "denzelcurry",
+            comment: "",
+            stars: 1.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          }
+        ],
+        profileImg:
+          "https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg",
+        createdAt: "2020-04-18T11:42:26+0000"
+      },
+      {
+        userID: 4,
+        name: "Jane Doe",
+        username: "janedoe",
+        category: "Design & Media",
+        subcategories: ["Web Developer"],
+        reviews: [
+          {
+            id: uuidv4(),
+            userID: 3,
+            name: "John Doe",
+            username: "johndoe",
+            comment: "",
+            stars: 4.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 2,
+            name: "JID",
+            username: "Jidofficial",
+            comment: "",
+            stars: 1.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          },
+          {
+            id: uuidv4(),
+            userID: 1,
+            name: "Denzel Curry",
+            username: "denzelcurry",
+            comment: "",
+            stars: 2.0,
+            createdAt: "2020-05-18T11:42:26+0000"
+          }
+        ],
+        profileImg:
+          "https://specials-images.forbesimg.com/imageserve/5de308b7c283810006a35810/960x0.jpg?fit=scale",
+        createdAt: "2020-03-26T11:42:26+0000"
+      }
+    ]
   };
 
   const [state, dispatch] = useReducer(creativeReducer, initialState);
@@ -85,8 +243,8 @@ const CreativeState = props => {
     });
   };
 
-  // Set Sub Category
-  const setSubCategories = item => {
+  // Set Subcategory
+  const setSubcategories = item => {
     dispatch({
       type: SET_SUBCATEGORIES,
       payload: item
@@ -109,13 +267,14 @@ const CreativeState = props => {
   return (
     <CreativeContext.Provider
       value={{
+        creatives: state.creatives,
         categories: state.categories,
         sort: state.sort,
         category: state.category,
-        subCategories: state.subCategories,
+        subcategories: state.subcategories,
         setSort,
         setCategory,
-        setSubCategories,
+        setSubcategories,
         setQuickCategory,
         resetFilters
       }}

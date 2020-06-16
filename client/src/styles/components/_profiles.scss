@@ -1,0 +1,225 @@
+.creatives {
+  .profiles {
+    padding: 10px 0 0;
+
+    .profile-item {
+      display: flex;
+      flex-direction: column;
+      background: $white;
+      border-radius: 4px;
+      border: 1px solid $border-color1;
+
+      .card {
+        flex: 1 1 auto;
+        padding: 20px 20px;
+
+        .name {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          h3 {
+            font-size: 18px;
+            color: $black;
+            font-weight: 600;
+          }
+
+          span {
+            font-size: 16px;
+            color: $grey;
+            font-weight: 400;
+          }
+        }
+
+        hr {
+          display: block;
+          height: 1px;
+          border: 0;
+          border-top: 1px solid $border-color1;
+          margin: 10px 0 15px;
+        }
+
+        .row {
+          display: flex;
+          flex-direction: column;
+
+          .reviews {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+            span {
+              padding-top: 1px;
+              font-size: 14px;
+              font-weight: 400;
+              margin-right: 5px;
+              color: $grey;
+            }
+
+            .stars {
+              display: flex;
+              justify-content: space-between;
+              width: 90px;
+
+              i {
+                color: $grey;
+                cursor: initial;
+                font-size: 14px;
+                margin-right: 2px;
+              }
+
+              .fa-star,
+              .fa-star-half-alt {
+                color: orange;
+              }
+            }
+          }
+
+          .buttons {
+            display: flex;
+
+            button {
+              min-height: 35px;
+              padding: 0 10px;
+              font-size: 12px;
+              font-weight: 500;
+              border-radius: 3px;
+              border: none;
+              outline: none;
+              cursor: pointer;
+
+              &:hover {
+                color: $white;
+                background: $green;
+                border: 1px solid $green;
+              }
+            }
+
+            .preview-profile-btn {
+              background: $lightgrey;
+              color: $black;
+              border: 1px solid $border-color1;
+              margin-right: 15px;
+            }
+
+            .contact-btn {
+              background: $white;
+              color: $green;
+              border: 1px solid $border-color1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .profiles.line-layout .profile-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 150px;
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .creatives .profiles .profile-item {
+    .card .row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .reviews {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .creatives {
+    .profiles {
+      padding: 0;
+    }
+
+    .profiles.box-layout {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .profile-item {
+        position: relative;
+        width: calc((100% / 2) - 10px);
+        min-height: 300px;
+        margin-bottom: 15px;
+
+        .image-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          .overlay {
+            position: absolute;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            height: 250px;
+            width: 100%;
+            background: $green;
+            z-index: 1;
+          }
+
+          h3 {
+            position: absolute;
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: $white;
+            z-index: 2;
+          }
+
+          img {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            margin-right: 0px;
+          }
+        }
+
+        .card .row {
+          flex-direction: column;
+          align-items: initial;
+          justify-content: initial;
+
+          .reviews {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 924px) {
+  .creatives .profiles .profile-item {
+    .card .row {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .reviews {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1260px) {
+  .creatives .profiles.box-layout .profile-item {
+    width: calc((100% / 3) - 10px);
+    margin-bottom: 15px;
+  }
+}

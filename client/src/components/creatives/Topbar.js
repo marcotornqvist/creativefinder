@@ -24,7 +24,6 @@ const Topbar = ({ showFilters, setShowFilters, layout, setLayout, mobile }) => {
             >
               Reset
             </button>
-            <span>|</span>
             <div className="layout-buttons">
               <div
                 className={`box${layout ? " selected" : ""}`}

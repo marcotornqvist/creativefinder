@@ -8,6 +8,7 @@ export const SET_SORT = "SET_SORT";
 export const SET_CATEGORY = "SET_CATEGORY";
 export const SET_SUBCATEGORIES = "SET_SUBCATEGORIES";
 export const SET_QUICKCATEGORY = "SET_QUICKCATEGORY";
+export const SET_MODAL = "SET_MODAL";
 export const RESET_FILTERS = "RESET_FILTERS";
 export const LOGOUT = "LOGOUT";
 export const LOGIN = "LOGIN";

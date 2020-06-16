@@ -4,6 +4,7 @@
   justify-content: center;
 
   .top-bar {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -17,7 +18,7 @@
       cursor: pointer;
       color: $grey;
       outline: none;
-      background: $lightgrey;
+      background: $white;
     }
 
     .open {
@@ -58,22 +59,14 @@
           border: none;
           border-radius: 3px;
           color: $grey;
-          background: $lightgrey;
+          background: $white;
           cursor: pointer;
           outline: none;
-        }
-
-        span {
-          display: flex;
-          align-items: center;
-          height: 30px;
-          font-weight: 200;
-          font-size: 36px;
-          margin: 0 10px;
-          color: $border-color2;
+          border: 1px solid $border-color1;
         }
 
         .layout-buttons {
+          margin-left: 10px;
           display: flex;
           padding-bottom: 5px;
 
@@ -84,7 +77,7 @@
             width: 30px;
             height: 30px;
             border-radius: 3px;
-            background: $lightgrey;
+            background: $white;
             cursor: pointer;
 
             i {

@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
-import CreativeContext from "../../../context/creative/creativeContext";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CreativeContext from "../../../context/creative/creativeContext";
+import useOutsideClick from "../../../hooks/useOutsideClick";
 
-const SubCategoriesFilter = ({ variants, showFilters, mobile }) => {
+const SubcategoriesFilter = ({ variants, showFilters, mobile }) => {
   const creativeContext = useContext(CreativeContext);
-  const { subCategories, setSubCategories, category } = creativeContext;
+  const { subcategories, setSubcategories, category } = creativeContext;
   const [dropdown, setDropdown] = useState(true);
+
+  const ref = useRef();
+
+  useOutsideClick(ref, () => {
+    !mobile && dropdown && setDropdown(false);
+  });
 
   useEffect(() => {
     if (mobile && showFilters) {
@@ -15,12 +22,10 @@ const SubCategoriesFilter = ({ variants, showFilters, mobile }) => {
     }
   }, [mobile, showFilters]);
 
-  // console.log(subCategories);
-
   return (
-    <div className="sub-categories dropdown">
+    <div className="subcategories dropdown">
       <div className="menu-button" onClick={() => setDropdown(!dropdown)}>
-        <span>Sub Categories</span>
+        <span>Subcategories</span>
         <motion.i
           className="fas fa-angle-down"
           animate={{ rotate: dropdown ? 180 : 0 }}
@@ -35,6 +40,7 @@ const SubCategoriesFilter = ({ variants, showFilters, mobile }) => {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 0 } }}
+            ref={ref}
           >
             {category !== null ? (
               <ul>
@@ -43,13 +49,13 @@ const SubCategoriesFilter = ({ variants, showFilters, mobile }) => {
                     <div className="content">
                       <div
                         className={`box${
-                          subCategories.includes(item) ? " selected" : ""
+                          subcategories.includes(item) ? " selected" : ""
                         }`}
-                        onClick={() => setSubCategories(item)}
+                        onClick={() => setSubcategories(item)}
                       >
                         <i className="fas fa-check"></i>
                       </div>
-                      <span onClick={() => setSubCategories(item)}>{item}</span>
+                      <span onClick={() => setSubcategories(item)}>{item}</span>
                     </div>
                   </li>
                 ))}
@@ -64,4 +70,4 @@ const SubCategoriesFilter = ({ variants, showFilters, mobile }) => {
   );
 };
 
-export default SubCategoriesFilter;
+export default SubcategoriesFilter;

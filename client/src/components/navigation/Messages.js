@@ -82,9 +82,7 @@ const Messages = () => {
           <motion.ul animate={chatOpen ? "open" : "closed"} variants={list}>
             {chat.map(item => (
               <li className="notification" key={item.id}>
-                <div className="img-box">
-                  <img src={item.image} alt="profile" />
-                </div>
+                <img src={item.image} alt="profile" />
                 <p>
                   <span className="name">{item.name}</span>{" "}
                   {shortenMessage(item.message, 70)}
@@ -104,9 +102,7 @@ const Messages = () => {
           <motion.ul animate={notifsOpen ? "open" : "closed"} variants={list}>
             {notifications.map(item => (
               <li className="notification" key={item.id}>
-                <div className="img-box">
-                  <img src={item.image} alt="profile" />
-                </div>
+                <img src={item.image} alt="profile" />
                 <p>
                   <span className="name">{item.name}</span>{" "}
                   {shortenMessage(item.message, 70)}

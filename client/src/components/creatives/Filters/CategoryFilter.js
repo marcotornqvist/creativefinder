@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
-import CreativeContext from "../../../context/creative/creativeContext";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CreativeContext from "../../../context/creative/creativeContext";
+import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const CategoryFilter = ({ variants, showFilters, mobile }) => {
   const creativeContext = useContext(CreativeContext);
   const { category, setCategory, categories } = creativeContext;
   const [dropdown, setDropdown] = useState(false);
+
+  const ref = useRef();
+
+  useOutsideClick(ref, () => {
+    !mobile && dropdown && setDropdown(false);
+  });
 
   useEffect(() => {
     if (mobile && showFilters) {
@@ -33,6 +40,7 @@ const CategoryFilter = ({ variants, showFilters, mobile }) => {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 0 } }}
+            ref={ref}
           >
             <ul>
               {categories.map(item => (

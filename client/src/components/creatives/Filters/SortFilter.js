@@ -1,13 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
-import CreativeContext from "../../../context/creative/creativeContext";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CreativeContext from "../../../context/creative/creativeContext";
+import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const SortFilter = ({ variants, showFilters, mobile }) => {
   const creativeContext = useContext(CreativeContext);
   const { setSort, sort } = creativeContext;
-
   const [dropdown, setDropdown] = useState(true);
   const sortItems = ["Recent", "Popular", "Random"];
+
+  const ref = useRef();
+
+  useOutsideClick(ref, () => {
+    !mobile && dropdown && setDropdown(false);
+  });
 
   useEffect(() => {
     if (mobile && showFilters) {
@@ -35,6 +41,7 @@ const SortFilter = ({ variants, showFilters, mobile }) => {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 0 } }}
+            ref={ref}
           >
             <ul>
               {sortItems.map((item, index) => (

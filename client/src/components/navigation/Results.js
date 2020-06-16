@@ -71,9 +71,7 @@ const Results = () => {
         {results.map(profile => (
           <Link to="/" key={profile.id}>
             <li className="profile" onClick={() => toggleSearch(!showSearch)}>
-              <div className="img-box">
-                <img src={profile.image} alt="profile" />
-              </div>
+              <img src={profile.image} alt="profile" />
               <div>
                 <h4 className="name">{profile.name}</h4>
                 <span>Contact</span>
