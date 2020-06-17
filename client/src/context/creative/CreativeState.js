@@ -9,7 +9,9 @@ import {
   SET_CATEGORY,
   SET_SUBCATEGORIES,
   SET_QUICKCATEGORY,
-  RESET_FILTERS
+  SET_MODAL,
+  RESET_FILTERS,
+  SEARCH_TEXT
 } from "../types";
 
 const CreativeState = props => {
@@ -56,9 +58,6 @@ const CreativeState = props => {
         ]
       }
     ],
-    sort: "Recent",
-    category: null,
-    subcategories: [],
     creatives: [
       {
         userID: 1,
@@ -215,7 +214,12 @@ const CreativeState = props => {
           "https://specials-images.forbesimg.com/imageserve/5de308b7c283810006a35810/960x0.jpg?fit=scale",
         createdAt: "2020-03-26T11:42:26+0000"
       }
-    ]
+    ],
+    sort: "Recent",
+    category: null,
+    subcategories: [],
+    profileModal: null,
+    searchText: ""
   };
 
   const [state, dispatch] = useReducer(creativeReducer, initialState);
@@ -259,9 +263,25 @@ const CreativeState = props => {
     });
   };
 
+  // Set Content Off Modal
+  const setModal = item => {
+    dispatch({
+      type: SET_MODAL,
+      payload: item
+    });
+  };
+
   // Reset Filters and Sort
   const resetFilters = () => {
     dispatch({ type: RESET_FILTERS });
+  };
+
+  // Set Search Text
+  const setSearchText = text => {
+    dispatch({
+      type: SEARCH_TEXT,
+      payload: text
+    });
   };
 
   return (
@@ -272,11 +292,15 @@ const CreativeState = props => {
         sort: state.sort,
         category: state.category,
         subcategories: state.subcategories,
+        profileModal: state.profileModal,
+        searchText: state.searchText,
         setSort,
         setCategory,
         setSubcategories,
         setQuickCategory,
-        resetFilters
+        setModal,
+        resetFilters,
+        setSearchText
       }}
     >
       {props.children}

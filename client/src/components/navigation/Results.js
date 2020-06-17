@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import NavigationContext from "../../context/navigation/navigationContext";
 
-const Results = () => {
+const Results = ({ showSearch, setShowSearch }) => {
   const [results] = useState([
     {
       id: 1,
@@ -62,15 +61,12 @@ const Results = () => {
     }
   ]);
 
-  const navigationContext = useContext(NavigationContext);
-  const { showSearch, toggleSearch } = navigationContext;
-
   return (
     <div className="results">
       <ul>
         {results.map(profile => (
           <Link to="/" key={profile.id}>
-            <li className="profile" onClick={() => toggleSearch(!showSearch)}>
+            <li className="profile" onClick={() => setShowSearch(!showSearch)}>
               <img src={profile.image} alt="profile" />
               <div>
                 <h4 className="name">{profile.name}</h4>

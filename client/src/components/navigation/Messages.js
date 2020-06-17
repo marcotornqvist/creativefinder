@@ -1,7 +1,7 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import NavigationContext from "../../context/navigation/navigationContext";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 
 const messagesVariants = {
   visible: { opacity: 1, transition: { duration: 0.3 } },
@@ -21,21 +21,72 @@ const list = {
   }
 };
 
-const Messages = () => {
-  const navigationContext = useContext(NavigationContext);
-  const {
-    showMessages,
-    toggleMessages,
-    chat,
-    notifications
-  } = navigationContext;
+const Messages = ({ showMessages, setShowMessages }) => {
   const [chatOpen, setChatOpen] = useState(false);
   const [notifsOpen, setNotifsOpen] = useState(false);
+
+  const [notifications] = useState([
+    {
+      id: 1,
+      name: "Denzel Curry",
+      message: "Has accepted your friend request.",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    },
+    {
+      id: 2,
+      name: "Denzel Curry",
+      message: "Has accepted your friend request.",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    },
+    {
+      id: 3,
+      name: "Denzel Curry",
+      message:
+        "Lorem ipsum dolor sit amet consectetur adipis elit. Non, soluta? Corporis mollitia",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    }
+  ]);
+
+  const [chat] = useState([
+    {
+      id: 1,
+      name: "Denzel Curry",
+      message: "Has accepted your friend request.",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    },
+    {
+      id: 2,
+      name: "Denzel Curry",
+      message: "Has accepted your friend request.",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    },
+    {
+      id: 3,
+      name: "Denzel Curry",
+      message:
+        "Lorem ipsum dolor sit amet consectetur adipis elit. Non, soluta? Corporis mollitia",
+      image:
+        "https://pbs.twimg.com/profile_images/1197025973419425793/yD_esUX3.jpg",
+      createdAt: "One day ago"
+    }
+  ]);
+
+  useLockBodyScroll(showMessages);
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    showMessages && toggleMessages(false);
+    showMessages && setShowMessages(false);
   });
 
   const chatClickHandler = () => {

@@ -49,7 +49,12 @@ const ProfileItem = ({ item, layout }) => {
         <div className="row">
           <Reviews reviews={reviews} />
           <div className="buttons">
-            <button className="preview-profile-btn">Preview Profile</button>
+            <button
+              className="preview-profile-btn"
+              onClick={() => setModal(item)}
+            >
+              Preview Profile
+            </button>
             <button className="contact-btn">Contact</button>
           </div>
         </div>

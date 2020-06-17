@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import Filters from "../components/creatives/Filters";
 import Topbar from "../components/creatives/Topbar";
 import Profiles from "../components/creatives/Profiles";
+import ProfileModal from "../components/creatives/Profiles/ProfileModal";
 import ViewportContext from "../context/viewport/viewportContext";
 
 const Creatives = () => {
@@ -42,6 +43,7 @@ const Creatives = () => {
           </Fragment>
         )}
         <Profiles layout={layout} showFilters={showFilters} />
+        <ProfileModal />
       </div>
     </div>
   );

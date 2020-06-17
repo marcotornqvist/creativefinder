@@ -1,7 +1,8 @@
 import React, { useContext, useRef } from "react";
-import NavigationContext from "../../context/navigation/navigationContext";
+import CreativeContext from "../../context/creative/creativeContext";
 import Results from "./Results";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 import { motion, AnimatePresence } from "framer-motion";
 
 const searchVariants = {
@@ -9,19 +10,16 @@ const searchVariants = {
   hidden: { opacity: 0, transition: { duration: 0.3 } }
 };
 
-const Search = () => {
-  const navigationContext = useContext(NavigationContext);
-  const {
-    showSearch,
-    toggleSearch,
-    searchText,
-    setSearchText
-  } = navigationContext;
+const Search = ({ showSearch, setShowSearch }) => {
+  const creativeContext = useContext(CreativeContext);
+  const { searchText, setSearchText } = creativeContext;
+
+  useLockBodyScroll(showSearch);
 
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    showSearch && toggleSearch(false);
+    showSearch && setShowSearch(false);
   });
 
   return (
@@ -46,7 +44,10 @@ const Search = () => {
               onChange={e => setSearchText(e.target.value)}
             />
           </form>
-          <Results />
+          <Results
+            showSearch={showSearch}
+            setShowSearch={showSearch => setShowSearch(showSearch)}
+          />
         </motion.div>
       )}
     </AnimatePresence>

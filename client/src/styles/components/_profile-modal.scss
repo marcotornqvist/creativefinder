@@ -1,58 +1,37 @@
-.profile-modal {
+.modal-overlay {
   position: fixed;
   top: 0;
-  right: 0;
-  padding: 20px 20px;
-  width: 80%;
-  height: 100%;
-  background: white;
-  z-index: 5;
-  border-left: 1px solid $border-color1;
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0 40px;
-
-    a {
-      font-size: 24px;
-      color: $red;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    i {
-      color: $red;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  }
-
-  ul {
-    padding-top: 0px;
-
-    li {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      padding: 0 0 35px;
-
-      a {
-        color: $black;
-        font-size: 16px;
-        font-weight: 500;
-
-        &:hover {
-          color: $red;
-        }
-      }
-    }
-  }
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background: $backdrop1;
 }
 
-@media only screen and (min-width: 768px) {
-  .profile-modal {
-    display: none;
+.modal-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+
+  .modal-profile {
+    z-index: 100;
+    width: 100%;
+    min-height: 600px;
+    background: white;
+    position: relative;
+    border-radius: 3px;
+    margin: 0 15px;
   }
 }

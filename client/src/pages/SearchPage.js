@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from "react";
-import NavigationContext from "../context/navigation/navigationContext";
+import CreativeContext from "../context/creative/creativeContext";
 import Results from "../components/navigation/Results";
 
 const SearchPage = () => {
-  const navigationContext = useContext(NavigationContext);
-  const { searchText, setSearchText } = navigationContext;
+  const creativeContext = useContext(CreativeContext);
+  const { searchText, setSearchText } = creativeContext;
   const searchInput = useRef(null);
 
   return (

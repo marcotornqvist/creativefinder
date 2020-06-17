@@ -4,7 +4,9 @@ import {
   SET_CATEGORY,
   SET_SUBCATEGORIES,
   SET_QUICKCATEGORY,
-  RESET_FILTERS
+  SET_MODAL,
+  RESET_FILTERS,
+  SEARCH_TEXT
 } from "../types";
 
 export default (state, action) => {
@@ -53,12 +55,22 @@ export default (state, action) => {
         category,
         subcategories
       };
+    case SET_MODAL:
+      return {
+        ...state,
+        profileModal: action.payload
+      };
     case RESET_FILTERS:
       return {
         ...state,
         sort: "Recent",
         category: null,
         subcategories: []
+      };
+    case SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.payload
       };
     default:
       return state;

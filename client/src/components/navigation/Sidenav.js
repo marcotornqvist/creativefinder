@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import AuthContext from "../../context/auth/authContext";
-import NavigationContext from "../../context/navigation/navigationContext";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 
 const backdrop = {
   visible: { opacity: 1, transition: { duration: 0.5, type: "tween" } },
@@ -22,41 +22,41 @@ const sidenav = {
   }
 };
 
-const Sidenav = () => {
+const Sidenav = ({ showSidenav, setShowSidenav }) => {
   const authContext = useContext(AuthContext);
-  const navigationContext = useContext(NavigationContext);
   const { isAuthenticated } = authContext;
-  const { toggleSidenav, showSidenav } = navigationContext;
+
+  useLockBodyScroll(showSidenav);
 
   const userLinks = (
     <Fragment>
       <li>
-        <Link to="/creatives" onClick={() => toggleSidenav(false)}>
+        <Link to="/creatives" onClick={() => setShowSidenav(false)}>
           Find Creatives
         </Link>
       </li>
       <li>
-        <Link to="/forum" onClick={() => toggleSidenav(false)}>
+        <Link to="/forum" onClick={() => setShowSidenav(false)}>
           Community
         </Link>
       </li>
       <li>
-        <Link to="/my-profile" onClick={() => toggleSidenav(false)}>
+        <Link to="/my-profile" onClick={() => setShowSidenav(false)}>
           My Profile
         </Link>
       </li>
       <li>
-        <Link to="/settings" onClick={() => toggleSidenav(false)}>
+        <Link to="/settings" onClick={() => setShowSidenav(false)}>
           User Settings
         </Link>
       </li>
       <li>
-        <Link to="/search" onClick={() => toggleSidenav(false)}>
+        <Link to="/search" onClick={() => setShowSidenav(false)}>
           Search
         </Link>
       </li>
       <li>
-        <Link to="/" onClick={() => toggleSidenav(false)}>
+        <Link to="/" onClick={() => setShowSidenav(false)}>
           Log Out
         </Link>
       </li>
@@ -66,22 +66,22 @@ const Sidenav = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to="/creatives" onClick={() => toggleSidenav(false)}>
+        <Link to="/creatives" onClick={() => setShowSidenav(false)}>
           Find Creatives
         </Link>
       </li>
       <li>
-        <Link to="/forum" onClick={() => toggleSidenav(false)}>
+        <Link to="/forum" onClick={() => setShowSidenav(false)}>
           Community
         </Link>
       </li>
       <li>
-        <Link to="/log-in" onClick={() => toggleSidenav(false)}>
+        <Link to="/log-in" onClick={() => setShowSidenav(false)}>
           Log In
         </Link>
       </li>
       <li>
-        <Link to="/sign-up" onClick={() => toggleSidenav(false)}>
+        <Link to="/sign-up" onClick={() => setShowSidenav(false)}>
           Sign Up
         </Link>
       </li>
@@ -98,7 +98,7 @@ const Sidenav = () => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            onClick={() => toggleSidenav(false)}
+            onClick={() => setShowSidenav(false)}
           ></motion.div>
           <motion.div
             className="sidenav"
@@ -108,12 +108,12 @@ const Sidenav = () => {
             exit="hidden"
           >
             <div className="header">
-              <Link to="/" onClick={() => toggleSidenav(false)}>
+              <Link to="/" onClick={() => setShowSidenav(false)}>
                 Creativefinder
               </Link>
               <i
                 className="fas fa-times"
-                onClick={() => toggleSidenav(false)}
+                onClick={() => setShowSidenav(false)}
               ></i>
             </div>
             <ul>{isAuthenticated ? userLinks : guestLinks}</ul>

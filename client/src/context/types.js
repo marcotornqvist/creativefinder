@@ -1,8 +1,4 @@
 // export const GET_CREATIVES = "GET_CREATIVES";
-export const TOGGLE_SEARCH = "TOGGLE_SEARCH";
-export const TOGGLE_MESSAGES = "TOGGLE_MESSAGES";
-export const TOGGLE_PROFILE = "TOGGLE_PROFILE";
-export const TOGGLE_SIDENAV = "TOGGLE_SIDENAV";
 export const SEARCH_TEXT = "SEARCH_TEXT";
 export const SET_SORT = "SET_SORT";
 export const SET_CATEGORY = "SET_CATEGORY";

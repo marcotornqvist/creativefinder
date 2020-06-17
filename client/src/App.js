@@ -13,7 +13,6 @@ import Register from "./pages/Register";
 import AuthState from "./context/auth/AuthState";
 import CreativeState from "./context/creative/CreativeState";
 import ViewportState from "./context/viewport/ViewportState";
-import NavigationState from "./context/navigation/NavigationState";
 import PrivateRoute from "./routing/PrivateRoute";
 import GuestRoute from "./routing/GuestRoute";
 
@@ -23,30 +22,24 @@ const App = () => {
   return (
     <AuthState>
       <CreativeState>
-        <NavigationState>
-          <ViewportState>
-            <Router>
-              <div className="App">
-                <Navbar />
-                <Switch>
-                  <GuestRoute exact path="/" component={Landing} />
-                  <Route exact path="/creatives" component={Creatives} />
-                  <Route exact path="/creative/:id" component={Creative} />
-                  <Route exact path="/forum" component={Forum} />
-                  <GuestRoute exact path="/log-in" component={Login} />
-                  <GuestRoute exact path="/sign-up" component={Register} />
-                  <PrivateRoute exact path="/settings" component={Settings} />
-                  <PrivateRoute exact path="/search" component={SearchPage} />
-                  <PrivateRoute
-                    exact
-                    path="/my-profile"
-                    component={MyProfile}
-                  />
-                </Switch>
-              </div>
-            </Router>
-          </ViewportState>
-        </NavigationState>
+        <ViewportState>
+          <Router>
+            <div className="App">
+              <Navbar />
+              <Switch>
+                <GuestRoute exact path="/" component={Landing} />
+                <Route exact path="/creatives" component={Creatives} />
+                <Route exact path="/creative/:id" component={Creative} />
+                <Route exact path="/forum" component={Forum} />
+                <GuestRoute exact path="/log-in" component={Login} />
+                <GuestRoute exact path="/sign-up" component={Register} />
+                <PrivateRoute exact path="/settings" component={Settings} />
+                <PrivateRoute exact path="/search" component={SearchPage} />
+                <PrivateRoute exact path="/my-profile" component={MyProfile} />
+              </Switch>
+            </div>
+          </Router>
+        </ViewportState>
       </CreativeState>
     </AuthState>
   );

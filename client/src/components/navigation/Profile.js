@@ -1,7 +1,7 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import NavigationContext from "../../context/navigation/navigationContext";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 import { motion, AnimatePresence } from "framer-motion";
 
 const profileVariants = {
@@ -9,15 +9,14 @@ const profileVariants = {
   hidden: { opacity: 0, transition: { duration: 0.3 } }
 };
 
-const Profile = () => {
-  const navigationContext = useContext(NavigationContext);
-  const { showProfile, toggleProfile } = navigationContext;
-
+const Profile = ({ showProfile, setShowProfile }) => {
   const ref = useRef();
 
   useOutsideClick(ref, () => {
-    showProfile && toggleProfile(false);
+    showProfile && setShowProfile(false);
   });
+
+  useLockBodyScroll(showProfile);
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -31,13 +30,13 @@ const Profile = () => {
           ref={ref}
         >
           <ul>
-            <li onClick={() => toggleProfile(false)}>
+            <li onClick={() => setShowProfile(false)}>
               <Link to="/my-profile">My Profile</Link>
             </li>
-            <li onClick={() => toggleProfile(false)}>
+            <li onClick={() => setShowProfile(false)}>
               <Link to="/settings">User Settings</Link>
             </li>
-            <li onClick={() => toggleProfile(false)}>
+            <li onClick={() => setShowProfile(false)}>
               <Link to="/">Log Out</Link>
             </li>
           </ul>

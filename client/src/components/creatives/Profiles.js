@@ -5,6 +5,7 @@ import ProfileItem from "./Profiles/ProfileItem";
 const Profiles = ({ showFilters, layout }) => {
   const creativeContext = useContext(CreativeContext);
   const { creatives } = creativeContext;
+
   return (
     !showFilters && (
       <div className={`profiles${layout ? " box-layout" : " line-layout"}`}>
